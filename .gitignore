@@ -6,3 +6,5 @@ protected/data/*.db
 themes/classic/views/
 protected/config/main.php
 .gitignore
+data/attachment
+index.php
