@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-05-2014 a las 18:35:20
+-- Tiempo de generación: 06-05-2014 a las 17:51:48
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.3.10-1ubuntu3.11
 
@@ -509,19 +509,19 @@ INSERT INTO `cruge_user` (`iduser`, `regdate`, `actdate`, `logondate`, `username
 CREATE TABLE IF NOT EXISTS `documento` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
   `nombre_documento` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `id_usuario_modificador` int(5) NOT NULL,
+  `id_usuairo_modificador` int(5) NOT NULL,
   `nombre_doc_bd` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `nombre_doc` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `tipo` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `id_usuairo_modificador` (`id_usuario_modificador`)
+  KEY `id_usuairo_modificador` (`id_usuairo_modificador`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=25 ;
 
 --
 -- Volcado de datos para la tabla `documento`
 --
 
-INSERT INTO `documento` (`id`, `nombre_documento`, `id_usuario_modificador`, `nombre_doc_bd`, `nombre_doc`, `tipo`) VALUES
+INSERT INTO `documento` (`id`, `nombre_documento`, `id_usuairo_modificador`, `nombre_doc_bd`, `nombre_doc`, `tipo`) VALUES
 (9, 'modificar other doc', 1, '918b112f-d2b7-422f-8506-7affe273af59.mp4', 'pruebatales.mp4', 'video/mp4'),
 (10, 'gdsgf', 1, '4eff5531-c566-4f49-889e-6977587ee106.mp3', 'SeñalDeVida.mp3', 'audio/mpeg'),
 (11, 'prueba 12', 1, 'c0655328-0b1c-4f7d-9aa1-3e935fa2c94f.jpg', 'av-9.jpg', 'image/jpeg'),
@@ -577,7 +577,7 @@ ALTER TABLE `cruge_authassignment`
 --
 ALTER TABLE `cruge_authitemchild`
   ADD CONSTRAINT `crugeauthitemchild_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `cruge_authitem` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `crugeauthitemchild_ibfk_2` FOREIGN KEY (`child`) REFERENCES `cruge_authitem` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `crugeauthitemchildibfk_2` FOREIGN KEY (`child`) REFERENCES `cruge_authitem` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `cruge_authitemchild_ibfk_2` FOREIGN KEY (`child`) REFERENCES `cruge_authitem` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `cruge_authitemchild_ibfk_3` FOREIGN KEY (`parent`) REFERENCES `cruge_authitem` (`name`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
@@ -592,7 +592,7 @@ ALTER TABLE `cruge_fieldvalue`
 -- Filtros para la tabla `documento`
 --
 ALTER TABLE `documento`
-  ADD CONSTRAINT `documento_ibfk_1` FOREIGN KEY (`id_usuario_modificador`) REFERENCES `cruge_user` (`iduser`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `documento_ibfk_1` FOREIGN KEY (`id_usuairo_modificador`) REFERENCES `cruge_user` (`iduser`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `documento_authitem`

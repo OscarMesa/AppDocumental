@@ -4,20 +4,20 @@
  * This is the model class for table "documento".
  *
  * The followings are the available columns in table 'documento':
- * @property int $id
+ * @property integer $id
  * @property string $nombre_documento
+ * @property integer $id_usuario_modificador
  * @property string $nombre_doc_bd
  * @property string $nombre_doc
  * @property string $tipo
- * @property int $id_usuario_modificador 
  *
  * The followings are the available model relations:
+ * @property CrugeUser $u_modificador
  * @property CrugeAuthitem[] $crugeAuthitems
  */
 class Documento extends CActiveRecord
 {
-
-	public $binaryfile;
+        public $binaryfile;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -34,14 +34,14 @@ class Documento extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre_documento,id_usuario_modificador ', 'required'),
+			array('nombre_documento,id_usuario_modificador', 'required'),
 			array('binaryfile', 'required','on'=>'insert'),
 			array('nombre_documento', 'length', 'max'=>100),
 			array('binaryfile', 'file', 
-	        	'maxSize'=>1024 * 1024 * 10, // 10MB
-	                'tooLarge'=>'El archivo a superado el tamaño permitido.',
-	            'allowEmpty' => true
-	         ),
+                            'maxSize'=>1024 * 1024 * 10, // 10MB
+                            'tooLarge'=>'El archivo a superado el tamaño permitido.',
+                            'allowEmpty' => true
+                        ),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, nombre_documento, tipo', 'safe', 'on'=>'search'),
@@ -70,10 +70,11 @@ class Documento extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'nombre_documento' => 'Nombre Documento',
+			'id_usuario_modificador' => 'Id Usuario Modificador',
+			'nombre_doc_bd' => 'Nombre Doc Bd',
+			'nombre_doc' => 'Nombre Doc',
+                        'binaryfile' => 'Archivo Adjunto',
 			'tipo' => 'Tipo',
-			'binaryfile' => 'Archivo Adjunto',
-			'nombre_doc' => 'Link Documento',
-                        'id_usuario_modificador' => 'Usuario modificador'
 		);
 	}
 
@@ -97,9 +98,11 @@ class Documento extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('nombre_documento',$this->nombre_documento,true);
+		$criteria->compare('id_usuario_modificador',$this->id_usuario_modificador);
+		$criteria->compare('nombre_doc_bd',$this->nombre_doc_bd,true);
+		$criteria->compare('nombre_doc',$this->nombre_doc,true);
 		$criteria->compare('tipo',$this->tipo,true);
-		$criteria->compare('binaryfile',$this->binaryfile,true); 
-		$criteria->compare('binaryfile',$this->id_usuario_modificador,true); 
+
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -115,8 +118,8 @@ class Documento extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-
-	public function asignarPerfilesDocumento($perfiles)
+        
+        public function asignarPerfilesDocumento($perfiles)
 	{
 		DocumentoAuthitem::model()->deleteAll('id_documento=?',array($this->id));
 		foreach ($perfiles as  $perfil) {
