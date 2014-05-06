@@ -49,7 +49,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
                 echo '<label><input id="CrugeAuthitem_name_' . $i . '" type="checkbox" name="CrugeAuthitem[name][]" value="' . $key . '">' . $value . '</label>';
             }
         }
-        echo $form->hiddenField($model, 'id_usuairo_modificador', array('value' => Yii::app()->user->getId()));
+        echo $form->hiddenField($model, 'id_usuario_modificador', array('value' => Yii::app()->user->getId()));
         ?>
 </fieldset>
 <div class="form-actions">

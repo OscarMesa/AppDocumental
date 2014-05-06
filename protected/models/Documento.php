@@ -4,12 +4,12 @@
  * This is the model class for table "documento".
  *
  * The followings are the available columns in table 'documento':
- * @property integer $id
+ * @property int $id
  * @property string $nombre_documento
  * @property string $nombre_doc_bd
  * @property string $nombre_doc
  * @property string $tipo
- * @property integer $id_usuairo_modificador 
+ * @property int $id_usuario_modificador 
  *
  * The followings are the available model relations:
  * @property CrugeAuthitem[] $crugeAuthitems
@@ -34,7 +34,7 @@ class Documento extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre_documento,id_usuairo_modificador ', 'required'),
+			array('nombre_documento,id_usuario_modificador ', 'required'),
 			array('binaryfile', 'required','on'=>'insert'),
 			array('nombre_documento', 'length', 'max'=>100),
 			array('binaryfile', 'file', 
@@ -58,7 +58,7 @@ class Documento extends CActiveRecord
 		return array(
 			'crugeAuthitems' => array(self::MANY_MANY, 'CrugeAuthitem', 'documento_authitem(id_documento, name_authitem)'),
 			'perfiles' => array(self::MANY_MANY, 'CrugeAuthitem', 'documento_authitem(name_authitem, id_documento)'),
-                        'u_modificador' => array(self::BELONGS_TO, 'CrugeUser','id_usuairo_modificador')
+                        'u_modificador' => array(self::BELONGS_TO, 'CrugeUser','id_usuario_modificador')
 		);
 	}
 
@@ -73,7 +73,7 @@ class Documento extends CActiveRecord
 			'tipo' => 'Tipo',
 			'binaryfile' => 'Archivo Adjunto',
 			'nombre_doc' => 'Link Documento',
-                        'id_usuairo_modificador' => 'Usuario modificador'
+                        'id_usuario_modificador' => 'Usuario modificador'
 		);
 	}
 
@@ -99,7 +99,7 @@ class Documento extends CActiveRecord
 		$criteria->compare('nombre_documento',$this->nombre_documento,true);
 		$criteria->compare('tipo',$this->tipo,true);
 		$criteria->compare('binaryfile',$this->binaryfile,true); 
-		$criteria->compare('binaryfile',$this->id_usuairo_modificador,true); 
+		$criteria->compare('binaryfile',$this->id_usuario_modificador,true); 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
