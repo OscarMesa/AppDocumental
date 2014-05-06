@@ -1,0 +1,25 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 6/05/2014, 12:05:21 AM
+    Author     : oskar
+*/
+/* line 11, /var/www/AppDocumental/css/template.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\0000311}}
+.grid-view .button-column {
+  width: 53px !important;
+}
+/* line 16, /var/www/AppDocumental/css/template.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\0000316}}
+#list-auth-items .row {
+  margin-left: 5px;
+}
+/* line 20, /var/www/AppDocumental/css/template.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\0000320}}
+.nav-tabs > li,
+.nav-pills > li {
+  float: none !important;
+}
