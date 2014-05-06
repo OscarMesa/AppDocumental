@@ -18,7 +18,6 @@
 	<br />
 	
 	<b><?php echo CHtml::encode($data->getAttributeLabel('tipo')); ?>:</b>
-	<?php echo  '<a href ='.Yii::app()->getBaseUrl(true).'/data/attachment/'.$data->nombre_doc_bd.' download>'.$data->nombre_doc.'</a>'; ?>
+	<?php echo  '<a href ='.Yii::app()->getBaseUrl(true).'/data/attachment/'.$data->nombre_doc_bd.' download="'.$data->nombre_doc.'">'.$data->nombre_doc.'</a>'; ?>
 	<br />
-
 </div>

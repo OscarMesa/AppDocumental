@@ -28,7 +28,7 @@ $this->menu = array(
 		array(               // related city displayed as a link
             'label'=>'Descargar documento',
             'type'=>'raw',
-            'value'=> '<a href ='.Yii::app()->getBaseUrl(true).'/data/attachment/'.$model->nombre_doc_bd.' download>'.$model->nombre_doc.'</a>',
+            'value'=> '<a href ='.Yii::app()->getBaseUrl(true).'/data/attachment/'.$model->nombre_doc_bd.' download="'. $model->nombre_doc .'">'.$model->nombre_doc.'</a>',
         )
 	),
 )); ?>
