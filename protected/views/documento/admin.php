@@ -59,8 +59,8 @@ $this->widget('bootstrap.widgets.TbGridView', array(
         array(
             'name' => 'binaryfile',
             'value' => function($data) {
-        echo '<a href =' . Yii::app()->getBaseUrl(true) . '/data/attachment/' . $data->nombre_doc_bd . ' download="'. $data->nombre_doc .'">' . $data->nombre_doc . '</a>';
-    },
+                 return  '<a href =' . Yii::app()->getBaseUrl(true) . '/data/attachment/' . $data->nombre_doc_bd . ' download="'. $data->nombre_doc .'">' . $data->nombre_doc . '</a>';
+            },
             'type' => 'raw'
         ),
         array(
