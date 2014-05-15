@@ -89,7 +89,7 @@
                                                 <tr>
                                                     <td>
                                                         <p><span>Dirijace al siguiente link.</span></p> <br/>
-                                                        <a href="<?php echo Yii::app()->createUrl('documento/'.$documento->id); ?>">Click aqui</a>
+                                                        <a href="<?php echo Yii::app()->getBaseUrl(true).'documento/'.$documento->id; ?>">Click aqui</a>
 
                                                     </td>
                                                 </tr>
