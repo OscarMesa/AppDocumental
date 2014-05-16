@@ -10,6 +10,8 @@
  * @property string $nombre_doc_bd
  * @property string $nombre_doc
  * @property string $tipo
+ * @property string $descripcion
+ * @property date $fecha_cheacion
  *
  * The followings are the available model relations:
  * @property CrugeUser $u_modificador
@@ -42,9 +44,11 @@ class Documento extends CActiveRecord
                             'tooLarge'=>'El archivo a superado el tamaño permitido.',
                             'allowEmpty' => true
                         ),
+                        array('descripcion', 'safe'),
+                        array('fecha_cheacion','safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, nombre_documento, tipo', 'safe', 'on'=>'search'),
+			array('id,  id_usuario_modificador, nombre_doc_bd, nombre_doc, nombre_documento, tipo', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -75,6 +79,8 @@ class Documento extends CActiveRecord
 			'nombre_doc' => 'Nombre Doc',
                         'binaryfile' => 'Archivo Adjunto',
 			'tipo' => 'Tipo',
+                        'descripcion' => 'Descripción',
+                        'fecha_cheacion' => 'Fecha de cracion'
 		);
 	}
 
@@ -102,7 +108,9 @@ class Documento extends CActiveRecord
 		$criteria->compare('nombre_doc_bd',$this->nombre_doc_bd,true);
 		$criteria->compare('nombre_doc',$this->nombre_doc,true);
 		$criteria->compare('tipo',$this->tipo,true);
-
+                $criteria->compare('descripcion',$this->descripcion,true);
+                $criteria->compare('fecha_cheacion',$this->fecha_cheacion,true);
+                
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

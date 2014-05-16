@@ -11,50 +11,64 @@
         <!--[if lt IE 8]>
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection" />
         <![endif]-->
+        <?php Yii::app()->bootstrap->register(); ?>
 
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
-        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/template.css" />
+        <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/unsemantic/assets/stylesheets/unsemantic-grid-base.css" /> 
+       <?php Yii::app()->clientScript->registerCssFile(Yii::app()->request->baseUrl . '/css/template.css'); ?>
 
-        <?php Yii::app()->bootstrap->register(); ?>
 
         <title><?php echo CHtml::encode($this->pageTitle); ?></title>
     </head>
 
     <body>
-            <?php
-            $this->widget('bootstrap.widgets.TbNavbar', array(
-                'type' => 'inverse', // null or 'inverse'
-                'brand' => 'AppDocumental',
-                'brandUrl' => '#',
-                'collapse' => true, // requires bootstrap-responsive.css
-                'items' => array(
-                    array(
-                        'class' => 'bootstrap.widgets.TbMenu',
-                        'items' => array(
-                            array('label' => 'Home', 'url' => array('/site/index')),
-                            array('label' => 'Documentos', 'url' => array('/documento'),
-                                'visible' => !Yii::app()->user->isGuest),
-                            array('label' => 'About', 'url' => array('/site/page', 'view' => 'about')),
-                            array('label' => 'Contact', 'url' => array('/site/contact')),
-                            array('label' => 'Administrar Usuarios'
-                                , 'url' => Yii::app()->user->ui->userManagementAdminUrl
-                                , 'visible' => Yii::app()->user->getIsSuperAdmin()),
-                            array('label' => 'Login'
-                                , 'url' => Yii::app()->user->ui->loginUrl
-                                , 'visible' => Yii::app()->user->isGuest),
-                            array('label' => 'Logout (' . Yii::app()->user->name . ')'
-                                , 'url' => Yii::app()->user->ui->logoutUrl
-                                , 'visible' => !Yii::app()->user->isGuest),
+        <?php
+        $this->widget('bootstrap.widgets.TbNavbar', array(
+            'type' => 'inverse', // null or 'inverse'
+            'brand' => '',
+            'brandUrl' => Yii::app()->getBaseUrl(true),
+            'collapse' => true, // requires bootstrap-responsive.css
+            'items' => array(
+                array(
+                    'class' => 'bootstrap.widgets.TbMenu',
+                    'items' => array(
+                        array('label' => 'Home', 'url' => array('/site/index')),
+                        array('label' => 'Documentos', 'url' => array('/documento'),
+                            'visible' => !Yii::app()->user->isGuest,
+                            'active'=>$this->id=='documento'?true:false),
+                        array('label' => 'Sobre nosotros', 'url' => array('/site/page', 'view' => 'about')),
+                        array('label' => 'Contactanos', 'url' => array('/site/contact')),
+                        array('label' => 'Ingresar '
+                            , 'url' => Yii::app()->user->ui->loginUrl
+                            , 'visible' => Yii::app()->user->isGuest
+                            , 'itemOptions' => array(
+                                'class' => 'menu_ingreso menu_entrar'
+                            ),
                         ),
+                        array('label' => 'Salir '
+                            , 'url' => Yii::app()->user->ui->logoutUrl
+                            , 'visible' => !Yii::app()->user->isGuest
+                            , 'itemOptions' => array(
+                                'class' => 'menu_ingreso menu_salir'
+                            ),
+                        ),
+                        array('label' => ' |  Usuarios'
+                            , 'url' => Yii::app()->user->ui->userManagementAdminUrl
+                            , 'visible' => Yii::app()->user->getIsSuperAdmin()
+                            , 'itemOptions' => array(
+                                'class' => 'menu_usuarios'
+                            )
+                        )
                     ),
                 ),
-            ));
-            ?>
+            ),
+        ));
+        ?>
         <div class="container" id="page">
 
             <div id="header">
-                <div id="logo"><?php echo CHtml::encode(Yii::app()->name);  ?></div>
+                <div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
             </div><!-- header -->
 
             <?php if (isset($this->breadcrumbs)): ?>
@@ -65,17 +79,17 @@
                 ?><!-- breadcrumbs -->
             <?php endif ?>
 
-            <?php  echo $content; ?>
+            <?php echo $content; ?>
 
             <div class="clear"></div>
 
-            <div id="footer">
-                Copyright &copy; <?php echo date('Y'); ?> por Mi empresa.<br/>
-                Todos los derechos  reservados.<br/>
-                <?php echo Yii::powered(); ?>
-            </div><!-- footer -->
+
 
         </div><!-- page -->
+        <div id="footer">
+            Copyright &copy; <?php echo date('Y'); ?> por Mi empresa.<br/>
+            Todos los derechos  reservados.<br/>
+        </div><!-- footer -->
         <?php echo Yii::app()->user->ui->displayErrorConsole(); ?>
     </body>
 </html>

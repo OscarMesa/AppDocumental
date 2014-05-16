@@ -51,6 +51,9 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
         }
         echo $form->hiddenField($model, 'id_usuario_modificador', array('value' => Yii::app()->user->getId()));
         ?>
+        
+        <?php echo $form->textAreaRow($model, 'descripcion', array('style'=> 'width: 489px; height: 111px;')); ?>
+        
 </fieldset>
 <div class="form-actions">
     <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType' => 'submit', 'label' => ($model->isNewRecord ? 'Crear' : 'Guardar'))); ?>

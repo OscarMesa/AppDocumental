@@ -55,14 +55,12 @@ class DocumentoController extends Controller {
         $model = new Documento('insert');
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
-        if (isset($_POST['CrugeAuthitem'])) {
+        if (isset($_POST['Documento'])) {
             //echo $this->guidv4();
             //echo dirname(Yii::app()->request->scriptFile);exit();
             $model->attributes = $_POST['Documento'];
 
-//            print_r( $model->attributes );
-//                exit();
-
+            
             $file = CUploadedFile::getInstance($model, 'binaryfile');
             if (!empty($_FILES['Documento']['tmp_name']['binaryfile']) && !$model->validate())
                 $model->binaryfile = 'file';
@@ -72,6 +70,8 @@ class DocumentoController extends Controller {
                 $file->saveAs(dirname(Yii::app()->request->scriptFile) . '/data/attachment/' . $model->nombre_doc_bd);
                 $model->tipo = $file->type;
             }
+            
+            
             if ($model->save()) {
                 if (isset($_POST['CrugeAuthitem']['name'])) {
                     $model->asignarPerfilesDocumento($_POST['CrugeAuthitem']['name']);
