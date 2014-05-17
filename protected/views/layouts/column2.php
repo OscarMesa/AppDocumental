@@ -9,6 +9,26 @@
     </div>
 </div>
 <div id="menu-lateral" class="span-5">
+    <?php  if(strpos(Yii::app()->controller->getRoute(),'documento/index') !== false){?>
+    <div class="busquedas">
+        <input type="text" placeholder="Buscar documento"/>
+        <div class="header-busquedas">Archivos</div>
+        <div class="fechas-busqueda">
+            <?php
+                $list= Yii::app()->db->createCommand('SELECT DATE_FORMAT( fecha_creacion, "%Y" ) "year", DATE_FORMAT( fecha_creacion, "%m" ) " month" FROM `documento` GROUP BY DATE_FORMAT( fecha_creacion, "%Y-%m" ) ORDER BY fecha_creacion ASC')->queryAll();
+                foreach ($list as $value) {
+                    echo '<a href="#">'.$value['year'].' | '.  date('M', mktime(0, 0, 0, $value['month'], 1, 2000)).'</a><br/>';
+                }
+            ?>
+        </div>
+        <div class="header-busquedas">Categorías</div>
+<!--        http://designwithpc.com/Plugins/ddSlick#demo-->
+        <?php
+            $categorias = CHtml::listData(Categoria::model()->findAll(), 'id_cat', 'nombre');
+            echo CHtml::dropDownList('categorias-select', '----', $categorias);
+        ?>
+    </div>
+    <?php } ?>
         <?php
    
 

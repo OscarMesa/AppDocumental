@@ -59,7 +59,7 @@
                                             </table>
                                             <table width="580" align="center" height="40" border="0" cellspacing="0" cellpadding="0">
                                                 <tr>
-                                                    <td width="193" height="40"><img src="http://www.aerovision.com.co/images/logo-aerovision.png" width="250" height="86" alt="logo" /></td>
+                                                    <td width="193" height="40"><img src="http://www.nettic.com.co/pruebasClientes/AppDocumental/images/logo1.png" width="250" height="86" alt="logo" /></td>
                                                 </tr>
                                             </table>
                                             <table width="580" height="40" align="center" border="0" cellspacing="0" cellpadding="0">
