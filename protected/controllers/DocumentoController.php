@@ -60,7 +60,7 @@ class DocumentoController extends Controller {
             //echo dirname(Yii::app()->request->scriptFile);exit();
             $model->attributes = $_POST['Documento'];
 
-            
+            $model->fecha_creacion = date('Y-m-d H:i:s');
             $file = CUploadedFile::getInstance($model, 'binaryfile');
             if (!empty($_FILES['Documento']['tmp_name']['binaryfile']) && !$model->validate())
                 $model->binaryfile = 'file';
@@ -75,6 +75,8 @@ class DocumentoController extends Controller {
             if ($model->save()) {
                 if (isset($_POST['CrugeAuthitem']['name'])) {
                     $model->asignarPerfilesDocumento($_POST['CrugeAuthitem']['name']);
+                if(isset($_POST['Categoria']['cat_id']))
+                    $model->asignarCategoriasDocumento ($_POST['Categoria']['cat_id']);
                     $usuarios = $this->obtenerUsuariosPerfiles($_POST['CrugeAuthitem']['name']);
                     $this->enviarMailUsuariosDoc($usuarios, $model);
                 }
@@ -132,12 +134,17 @@ class DocumentoController extends Controller {
             }
             if ($model->save()) {
                 $perfiles = array();
-                if (isset($_POST['CrugeAuthitem']['name'])){
+                $categorias = array();
+
+                if (isset($_POST['CrugeAuthitem']['name']))
                     $perfiles = $_POST['CrugeAuthitem']['name'];
-                    $model->asignarPerfilesDocumento($perfiles);
-                    $usuarios = $this->obtenerUsuariosPerfiles($_POST['CrugeAuthitem']['name']);
-                    $this->actualizarMailUsuariosDoc($usuarios, $model);
-                }
+                $model->asignarPerfilesDocumento($perfiles);
+                if(isset($_POST['Categoria']['cat_id']))
+                    $categorias = $_POST['Categoria']['cat_id'];
+                $model->asignarCategoriasDocumento ($categorias);
+                $usuarios = $this->obtenerUsuariosPerfiles($perfiles);
+                $this->actualizarMailUsuariosDoc($usuarios, $model);
+ 
                 $this->redirect(array('view', 'id' => $model->id));
             }
         }

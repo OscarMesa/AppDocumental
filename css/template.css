@@ -201,3 +201,12 @@ div.view {
   /*    height: 468px;
     padding-left: 13px;*/
 }
+/* line 168, /var/www/AppDocumental/css/template.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003168}}
+.listas_asignacion {
+  border-radius: 4px 4px 4px 4px;
+  -moz-border-radius: 4px 4px 4px 4px;
+  -webkit-border-radius: 4px 4px 4px 4px;
+  border: 3px solid #858285;
+  padding: 5px;
+}
