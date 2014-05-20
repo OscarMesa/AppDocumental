@@ -70,13 +70,13 @@ class DocumentoController extends Controller {
                 $file->saveAs(dirname(Yii::app()->request->scriptFile) . '/data/attachment/' . $model->nombre_doc_bd);
                 $model->tipo = $file->type;
             }
-            
-            
+
+
             if ($model->save()) {
                 if (isset($_POST['CrugeAuthitem']['name'])) {
                     $model->asignarPerfilesDocumento($_POST['CrugeAuthitem']['name']);
-                if(isset($_POST['Categoria']['cat_id']))
-                    $model->asignarCategoriasDocumento ($_POST['Categoria']['cat_id']);
+                    if (isset($_POST['Categoria']['cat_id']))
+                        $model->asignarCategoriasDocumento($_POST['Categoria']['cat_id']);
                     $usuarios = $this->obtenerUsuariosPerfiles($_POST['CrugeAuthitem']['name']);
                     $this->enviarMailUsuariosDoc($usuarios, $model);
                 }
@@ -139,12 +139,12 @@ class DocumentoController extends Controller {
                 if (isset($_POST['CrugeAuthitem']['name']))
                     $perfiles = $_POST['CrugeAuthitem']['name'];
                 $model->asignarPerfilesDocumento($perfiles);
-                if(isset($_POST['Categoria']['cat_id']))
+                if (isset($_POST['Categoria']['cat_id']))
                     $categorias = $_POST['Categoria']['cat_id'];
-                $model->asignarCategoriasDocumento ($categorias);
+                $model->asignarCategoriasDocumento($categorias);
                 $usuarios = $this->obtenerUsuariosPerfiles($perfiles);
                 $this->actualizarMailUsuariosDoc($usuarios, $model);
- 
+
                 $this->redirect(array('view', 'id' => $model->id));
             }
         }
@@ -174,11 +174,33 @@ class DocumentoController extends Controller {
      * Lists all models.
      */
     public function actionIndex() {
-        $dataProvider = new CActiveDataProvider('Documento',array(
-            'pagination'=> array(
-                'pageSize' => 4
-            )
-        ));
+       $criteria = new CDbCriteria();
+       $criteria->order = "fecha_creacion DESC";
+       if (isset($_GET['ajax'])) {
+            if($_GET['type'] == 'date')
+            {
+                $criteria->addCondition('fecha_creacion  BETWEEN ? AND ?');
+                $criteria->params = array($_GET['value'].'-01',$_GET['value'].'-31');
+            }else if($_GET['type'] == 'category'){
+                $criteria->join = " INNER JOIN categorias_documentos t2 ON( t.id = t2.id_documento)";
+                $criteria->addCondition('t2.id_cat = ?');
+                $criteria->params = array($_GET['value']);
+            }
+             $dataProvider = new CActiveDataProvider('Documento', array(
+                 'criteria' => $criteria, 
+                 'pagination' => array(
+                    'pageSize' => 10
+                )
+            ));
+        } else {
+            $dataProvider = new CActiveDataProvider('Documento', array(
+                'criteria' => $criteria,
+                'pagination' => array(
+                    'pageSize' => 10
+                )
+            ));
+        }
+     
         $this->render('index', array(
             'dataProvider' => $dataProvider,
         ));
@@ -254,8 +276,7 @@ class DocumentoController extends Controller {
             Yii::app()->mail->send($message);
         }
     }
-    
-    
+
     /**
      * Este metodo enviara a los usuarios un correo de notificacion sobre un archivo 
      * @param CrugeUser[] $usuarios
@@ -267,7 +288,7 @@ class DocumentoController extends Controller {
         $message->view = "notificacionArchivo";
         foreach ($usuarios as $usuario) {
             $params = array('usuario' => $usuario, 'documento' => $documento);
-            $message->subject = 'El documento - ' . $documento->nombre_doc.' ha sido actualizado.';
+            $message->subject = 'El documento - ' . $documento->nombre_doc . ' ha sido actualizado.';
             $message->setBody($params, 'text/html');
             // if ($usuario->email == 'oscarmesa.elpoli@gmail.com') {
             $message->addTo($usuario->email);

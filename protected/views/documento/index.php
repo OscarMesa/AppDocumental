@@ -26,6 +26,36 @@ $this->widget('bootstrap.widgets.TbListView', array(
     'itemView' => '_view',
     'id' => 'lista-archivos'
 ));
+
+
+Yii::app()->clientScript->registerScript('lista-archivos',
+    "var ajaxUpdateTimeout;
+    var ajaxRequest;
+     $('#categorias-select').change(function(){
+        ajaxRequest = {type:'category',value:$(this).val()};
+        load_archivos_ajax(ajaxRequest);
+    });
+    
+    $('.filter').click(function(e){
+        ajaxRequest = {type:$(this).attr('type'),value:$(this).attr('value')};
+        load_archivos_ajax(ajaxRequest);
+        e.preventDefault();
+    });
+    function load_archivos_ajax(ajaxRequest){
+        clearTimeout(ajaxUpdateTimeout);
+        ajaxUpdateTimeout = setTimeout(function () {
+           $.fn.yiiListView.update(
+    // this is the id of the CListView
+                    'lista-archivos',
+                    {data: ajaxRequest}
+                )
+            },
+    // this is the delay
+            300);
+    }
+    "
+);
+
 ?>
 
 
