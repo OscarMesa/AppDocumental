@@ -3,6 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/var/www/AppDocumental/protected/views/documento/view.php</file>
+            <file>file:/var/www/AppDocumental/protected/extensions/bootstrap/components/Bootstrap.php</file>
+            <file>file:/var/www/AppDocumental/protected/views/documento/_form.php</file>
+            <file>file:/var/www/AppDocumental/protected/views/site/index.php</file>
+            <file>file:/var/www/AppDocumental/protected/models/Documento.php</file>
+            <file>file:/var/www/AppDocumental/protected/vendor/Utilidades.php</file>
+            <file>file:/var/www/AppDocumental/protected/views/documento/_view.php</file>
+            <file>file:/var/www/AppDocumental/protected/views/layouts/column2.php</file>
+            <file>file:/var/www/AppDocumental/protected/controllers/DocumentoController.php</file>
+            <file>file:/var/www/AppDocumental/protected/views/layouts/main.php</file>
+            <file>file:/var/www/AppDocumental/protected/config/main.php</file>
+            <file>file:/var/www/AppDocumental/protected/views/documento/index.php</file>
+            <file>file:/var/www/AppDocumental/css/template.less</file>
+        </group>
     </open-files>
 </project-private>

@@ -23,12 +23,16 @@
     </head>
 
     <body>
-        <?php
+        <?php 
+        $classBrand = strpos(strtolower(Yii::app()->controller->getRoute()),'site/index') !== false?'':'NoAppBrand';
         $this->widget('bootstrap.widgets.TbNavbar', array(
             'type' => 'inverse', // null or 'inverse'
-            'brand' => '',
+            'brand' => '<img src="'.Yii::app()->getBaseUrl(true).'/images/logo.png">',
             'brandUrl' => Yii::app()->getBaseUrl(true),
             'collapse' => true, // requires bootstrap-responsive.css
+            'brandOptions' => array(
+                'class' =>$classBrand,
+            ),
             'items' => array(
                 array(
                     'class' => 'bootstrap.widgets.TbMenu',
@@ -82,10 +86,8 @@
             <?php echo $content; ?>
 
             <div class="clear"></div>
-
-
-
         </div><!-- page -->
+        
         <div id="footer">
             Copyright &copy; <?php echo date('Y'); ?> por Mi empresa.<br/>
             Todos los derechos  reservados.<br/>
