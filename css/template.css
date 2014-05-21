@@ -363,3 +363,8 @@ table.detail-view tr.odd {
   text-decoration: none;
   width: 110%;
 }
+/* line 305, /var/www/AppDocumental/css/template.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003305}}
+#lista-archivos .items .row-fluid {
+  margin-top: 10px;
+}

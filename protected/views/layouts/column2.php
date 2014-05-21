@@ -21,7 +21,7 @@
             <div class="header-busquedas">Archivos</div>
             <div class="fechas-busqueda">
                 <?php
-                $list = Yii::app()->db->createCommand('SELECT DATE_FORMAT( fecha_creacion, "%Y" ) "year", DATE_FORMAT( fecha_creacion, "%m" ) " month" FROM `documento` GROUP BY DATE_FORMAT( fecha_creacion, "%Y-%m" ) ORDER BY fecha_creacion ASC')->queryAll();
+                $list = Yii::app()->db->createCommand('SELECT DATE_FORMAT( fecha_creacion, "%Y" ) "year", DATE_FORMAT( fecha_creacion, "%m" ) " month" FROM `documento` GROUP BY DATE_FORMAT( fecha_creacion, "%Y-%m" ) ORDER BY fecha_creacion DESC')->queryAll();
                 foreach ($list as $value) {
                     echo '<a href="#" class="filter" type="date" value="'. $value['year'] . '-' . $value['month'] .'">' . $value['year'] . ' | ' . date('M', mktime(0, 0, 0, $value['month'], 1, 2000)) . '</a><br/>';
                 }
