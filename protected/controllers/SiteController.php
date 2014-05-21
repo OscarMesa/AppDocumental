@@ -25,9 +25,17 @@ class SiteController extends Controller {
      * when an action is not explicitly requested by users.
      */
     public function actionIndex() {
-        // renders the view file 'protected/views/site/index.php'
-        // using the default layout 'protected/views/layouts/main.php'
-        $this->render('index');
+        $criteria = new CDbCriteria();
+        $criteria->limit = 2;
+        $criteria->order = 'fecha_creacion DESC';
+        $dataProviderDoc = new CActiveDataProvider('Documento', array(
+                 'criteria' => $criteria,
+                 'pagination' => array('pageSize' => 2,),
+                 'totalItemCount' => 2,
+            ));
+        $this->render('index',array(
+            'dataProviderDoc' => $dataProviderDoc,
+        ));
     }
 
     /**

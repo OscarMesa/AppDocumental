@@ -59,7 +59,9 @@ class CrugeUser extends CActiveRecord
 		return array(
 			'crugeAuthitems' => array(self::MANY_MANY, 'CrugeAuthitem', 'cruge_authassignment(userid, itemname)'),
 			'crugeFieldvalues' => array(self::HAS_MANY, 'CrugeFieldvalue', 'iduser'),
-                        'documentos' => array(self::HAS_MANY,'Documento','id_usuario_modificador ')
+                        'documentos' => array(self::HAS_MANY,'Documento','id_usuario_modificador '),
+                        'campos' => array(self::MANY_MANY, 'CrugeUser', 'cruge_fieldvalue(iduser,idfield)'),
+                        'valoresCampo'=> array(self::HAS_MANY, 'CrugeFieldvalue', 'iduser'),
 		);
 	}
 

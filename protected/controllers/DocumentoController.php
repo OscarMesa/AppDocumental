@@ -32,7 +32,7 @@ class DocumentoController extends Controller {
         return array(
             array('allow', 'actions' => array(
                     'login', 'passwordrecovery', 'captcha'), 'users' => array('*'),),
-            array('allow', 'actions' => array('delete', 'admin', 'index', 'view', 'create', 'update', 'descargarArchivo'), 'users' => array('@'),),
+            array('allow', 'actions' => array('mail', 'delete', 'admin', 'index', 'view', 'create', 'update', 'descargarArchivo'), 'users' => array('@'),),
             array('deny', 'users' => array('*'),),
         );
     }
@@ -203,6 +203,17 @@ class DocumentoController extends Controller {
      
         $this->render('index', array(
             'dataProvider' => $dataProvider,
+        ));
+    }
+    
+    public function actionMail()
+    {
+        Yii::import('application.models.CrugeUser');
+        $usuario = CrugeUser::model()->findByPk(1);
+       $documento = Documento::model()->findByPk(10);
+       echo $this->renderPartial('application.views.mail.notificacionArchivo',array(
+           'usuario' => $usuario,
+            'documento' => $documento
         ));
     }
 

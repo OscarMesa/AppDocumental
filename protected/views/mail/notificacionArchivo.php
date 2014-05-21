@@ -45,7 +45,7 @@
                                 <table width="660" border="0" cellpadding="0" cellspacing="0" align="center">
                                     <tr>
                                         <td width="30"></td>
-                                        <td width="600" bgcolor="#DDDDDD">
+                                        <td width="600" bgcolor="">
                                             <!-- Top -->
                                             <table width="600" border="0" cellspacing="0" cellpadding="0">
                             <!--  <tr>
@@ -54,43 +54,31 @@
                                             </table>
                                             <table width="600" border="0" cellspacing="0" cellpadding="0">
                                                 <tr>
-                                                    <td width="600" bgcolor="#FFFFFF"><img src="http://www.nettic.com.co/boletines/tudiscotek/top.png" width="600" height="35" /></td>
+                                                    <td width="600" bgcolor=""><img src="<?php echo Yii::app()->getBaseUrl(true)?>/images/mail/head-mail.png" width="" height="" style="" /></td>
                                                 </tr>
                                             </table>
-                                            <table width="580" align="center" height="40" border="0" cellspacing="0" cellpadding="0">
+                                            <table width="580" style="margin-top: 0px;" align="center" height="40" border="0" cellspacing="0" cellpadding="0">
                                                 <tr>
-                                                    <td width="193" height="40"><img src="http://www.nettic.com.co/pruebasClientes/AppDocumental/images/logo1.png" width="250" height="86" alt="logo" /></td>
+                                                    <td width="193" height="40"><p style=" font-size: 21px;text-align: center; color: #7B507B; font-weight: bold;"><?php 
+                                                          $nombre = CrugeFieldValue::model()->find('iduser=? AND idfield=1',array($usuario->iduser));
+                                                          $genero = CrugeFieldValue::model()->find('iduser=? AND idfield=2',array($usuario->iduser));
+                                                    echo  ucwords(($genero->value==1?'señor':'señora').' '.$nombre->value); ?></p></td>
                                                 </tr>
                                             </table>
-                                            <table width="580" height="40" align="center" border="0" cellspacing="0" cellpadding="0">
+                                         
+                                            <table style="margin-top: 0px;" width="580" align="center" border="0" cellspacing="0" cellpadding="0">
                                                 <tr>
-                                                    <td width="300"><p style="text-align:left; font-size: 20px; color: #000000; line-height:10px; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif"><strong>Hola, <?php echo $usuario->username; ?></strong><br/>
-                                                        </p></td>
-                                                    <td align="right">
-                                                        <table width="280"  align="center" border="0" cellspacing="0" cellpadding="0">
-                                                            <tr>
-                                                                <td width="147" height="28" bgcolor="#242424" style="text-align:center; font-size: 18px; color: #FFFFFF; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif"><strong><?php echo $documento->nombre_doc; ?></strong></td>
-                                                                <td width="23" height="28"><img src="http://fc08.deviantart.net/fs70/f/2011/160/0/a/gmail_metal_icon_256x256_px_by_agamemmnon-d3igont.png" width="41" height="33" /></td>
-                                                            </tr>
-                                                        </table></td>
-                                                </tr>
-                                            </table>
-                                            <table width="580" align="center" border="0" cellspacing="0" cellpadding="0">
-                                                <tr>
-                                                    <td>
-                                                        <span style="text-align:center; font-size: 13px; color: #0A0A04; line-height:18px; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif">Te informamos que <b><?php echo $documento->u_modificador->username; ?></b> a actualizado un nuevo documento: <b><?php echo $documento->nombre_documento; ?></b>. Te estamos confirmando esta acción con el fin de que usted pueda ingresar y ver el contenido de este nuevo archivo.</span>
+                                                    <td width="400">
+                                                        <span style="text-align:justify; font-size: 13px; color: #0A0A04; line-height:18px; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif"><div>Te informamos que <b><?php echo $documento->u_modificador->username; ?></b> a actualizado un nuevo documento: <b><?php echo $documento->nombre_documento; ?></b>. Te estamos confirmando esta acción con el fin de que usted pueda ingresar y ver el contenido de este nuevo archivo.</div></span>
+                                                        <br/><p style="color: #7B507B;font-weight: bold">¡Gestion de documentos!</p>
                                                     </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-<!--                                                        <b>Se creo el documento :</b> <?php // echo $documento->nombre_documento; ?><br/>-->
-                                                    </td>
-                                                </tr>     
-                                                <tr>
-                                                    <td>
-                                                        <p><span>Dirijace al siguiente link.</span></p> <br/>
-                                                        <a href="<?php echo Yii::app()->getBaseUrl(true).'documento/'.$documento->id; ?>">Click aqui</a>
-
+                                                    <td width="100">
+                                                        <a href="<?php echo Yii::app()->getBaseUrl(true).'/documento/'.$documento->id; ?>" style="text-decoration: none;">
+                                                            <div style=" margin-left: 2em;">
+                                                            <img  src="<?php echo Yii::app()->getBaseUrl(true);?>/images/mail/icono-mail.png">
+                                                                <p style="text-decoration: none;color: #FFFFFF;text-align: center;background-color: #7B507B;margin-right: 13px;margin-top: 6px;">Click aquí</p>
+                                                            </div>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -101,12 +89,12 @@
                                             </table>
                                             <table width="600" border="0" align="center" bgcolor="#F2F2F2" cellpadding="0" cellspacing="5" id="separador">
                                                 <tr>
-                                                    <td height="25" valign="middle" style="font-size: 16px; color: #000000; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif"><strong>¡Getion de documentos!</strong></td>
+                                                 
                                                 </tr>
                                             </table>
                                             <table width="600" border="0" cellspacing="0" cellpadding="0">
                                                 <tr>
-                                                    <td width="600" bgcolor="#FFFFFF"><img src="http://www.nettic.com.co/boletines/tudiscotek/shadow-bottom.png" width="600" height="35" /></td>
+                                                    <td width="600" bgcolor="#FFFFFF"><img src="<?php echo Yii::app()->getBaseUrl(true)?>/images/mail/linea-inf-mail.png" width="" height="" /></td>
                                                 </tr>
                                             </table>
 
