@@ -165,23 +165,29 @@ class UiController extends Controller
     {
 
         $this->layout = CrugeUtil::config()->resetPasswordLayout;
-
+        
         $model = Yii::app()->user->um->getNewCrugeLogon('pwdrec');
-
+        
         Yii::app()->user->setFlash('pwdrecflash', null);
 
         if (isset($_POST[CrugeUtil::config()->postNameMappings['CrugeLogon']])) {
             $model->attributes = $_POST[CrugeUtil::config()->postNameMappings['CrugeLogon']];
             if ($model->validate()) {
-                $newPwd = CrugeUtil::passwordGenerator();
-                Yii::app()->user->um->changePassword($model->getModel(), $newPwd);
+                //$newPwd = CrugeUtil::passwordGenerator();
+                //Yii::app()->user->um->changePassword($model->getModel(), $newPwd);
+                Yii::import('application.models.CrugeUser');
+                $user = CrugeUser::model()->find('email = ? OR username = ?',array($model->username,$model->username));
+                
+                
+                $newPwd = $user->password;
+                
                 Yii::app()->crugemailer->sendPasswordTo($model->getModel(), $newPwd);
                 Yii::app()->user->um->save($model->getModel());
 
                 Yii::app()->user->setFlash(
                     'pwdrecflash'
                     ,
-                    CrugeTranslator::t('Una nueva clave ha sido enviada a su correo')
+                    CrugeTranslator::t('La clave ha sido enviada a su correo')
                 );
             }
         }
