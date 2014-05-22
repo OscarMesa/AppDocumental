@@ -89,8 +89,9 @@
         </div><!-- page -->
         
         <div id="footer">
-            Copyright &copy; <?php echo date('Y'); ?> por Mi empresa.<br/>
-            Todos los derechos  reservados.<br/>
+            Carrera 43A No. 16A Sur - 38 Oficina 605 Edificio DHL - Pbx-Fax 313 40 70 Medellín - Colombia<br/>
+            Copyright &copy; <?php echo date('Y'); ?> por Ai S.A.S, 
+            todos los derechos  reservados.<br/>
         </div><!-- footer -->
         <?php echo Yii::app()->user->ui->displayErrorConsole(); ?>
     </body>
