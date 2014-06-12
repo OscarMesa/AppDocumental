@@ -6,7 +6,7 @@ Yii::import('application.models.CrugeUser');
 
 ?>
 <div class="row-fluid span5">
-    <p class="fron-fecha"><?php echo strftime('%A %d de %B de %Y %H:%M ', strtotime($data->fecha_creacion)); ?></p>
+    <p class="fron-fecha"><?php echo CHtml::encode(strftime('%A %d de %B de %Y %H:%M ', strtotime($data->fecha_creacion))); ?></p>
     <b class="fron-titulo"><?php echo $data->titulo;?></b>       
     <p class="fron-user-atualizado">Actualizado por:<?php echo $data->user->username;?></p>
     <div class="fron-image"><img width="300" height="300" src="<?php echo $data->imagen;?>"/></div>
