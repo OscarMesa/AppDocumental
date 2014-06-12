@@ -13,10 +13,10 @@
 
         <div class="busquedas">
 
-            <div class="input-prepend">
+<!--            <div class="input-prepend">
                 <span class="add-on"><i class="icon-search"></i></span>
                 <input class="span2" id="busqueda-noticias" type="text" placeholder="Buscar noticia">
-            </div>
+            </div>-->
             <!--        <input type="text" placeholder=""/>-->
             <div class="header-busquedas">Archivos</div>
             <div class="fechas-busqueda">
