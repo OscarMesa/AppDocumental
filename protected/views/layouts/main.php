@@ -101,6 +101,6 @@
             Copyright &copy; <?php echo date('Y'); ?> por Ai S.A.S, 
             todos los derechos  reservados.<br/>
         </div><!-- footer -->
-        <?php echo Yii::app()->user->ui->displayErrorConsole(); ?>
+        <?php //echo Yii::app()->user->ui->displayErrorConsole(); ?>
     </body>
 </html>
