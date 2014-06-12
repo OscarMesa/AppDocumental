@@ -319,7 +319,7 @@ thead th {
 /* line 265, /var/www/AppDocumental/css/template.less */
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003265}}
 table tr.odd {
-  background: none repeat scroll 0 0 #7B447B;
+  background: none repeat scroll 0 0 #7B447B !important;
   color: #FFFFFF;
 }
 /* line 268, /var/www/AppDocumental/css/template.less */
