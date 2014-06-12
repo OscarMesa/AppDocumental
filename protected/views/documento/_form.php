@@ -81,10 +81,10 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     ?>
 
 <?php echo $form->textAreaRow($model, 'descripcion', array('style' => 'width: 489px; height: 111px;')); ?>
-
-</fieldset>
 <div class="form-actions">
 <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType' => 'submit', 'label' => ($model->isNewRecord ? 'Crear' : 'Guardar'))); ?>
 </div>
+</fieldset>
+
 
 <?php $this->endWidget(); ?>

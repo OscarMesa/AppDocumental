@@ -9,3 +9,4 @@ protected/config/main.php
 data/attachment
 index.php
 /protected/config/
+!/protected/views/noticia/index.php

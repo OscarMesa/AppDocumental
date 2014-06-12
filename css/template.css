@@ -60,7 +60,7 @@ h1 {
   background-color: #7B507B;
   margin: none;
   position: absolute;
-  margin-left: 4em;
+  margin-left: 2em;
   padding: 19px 16px 36px;
 }
 /* line 63, /var/www/AppDocumental/css/template.less */
@@ -68,7 +68,7 @@ h1 {
 .navbar .nav {
   height: 67px;
   margin-top: -13px;
-  margin-left: 22em;
+  margin-left: 16em;
 }
 /* line 69, /var/www/AppDocumental/css/template.less */
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\0000369}}
@@ -140,7 +140,7 @@ h1 {
 /* line 116, /var/www/AppDocumental/css/template.less */
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003116}}
 .menu_salir {
-  padding-left: 11em;
+  padding-left: 7em;
   padding-top: 23px !important;
 }
 /* line 120, /var/www/AppDocumental/css/template.less */
@@ -237,7 +237,7 @@ div.view {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003195}}
 #menu-lateral {
   margin-left: 10px;
-  margin-top: -25px;
+  margin-top: -4px;
   /*    height: 468px;
         padding-left: 13px;*/
 }
@@ -304,7 +304,7 @@ thead th {
 .navbar-inverse .NoAppBrand {
   background: none;
   padding: 0;
-  margin-left: 7em;
+  margin-left: 3em;
 }
 /* line 256, /var/www/AppDocumental/css/template.less */
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003256}}
@@ -318,12 +318,27 @@ thead th {
 }
 /* line 265, /var/www/AppDocumental/css/template.less */
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003265}}
-table.detail-view tr.odd {
+table tr.odd {
   background: none repeat scroll 0 0 #7B447B;
   color: #FFFFFF;
 }
-/* line 270, /var/www/AppDocumental/css/template.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003270}}
+/* line 268, /var/www/AppDocumental/css/template.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003268}}
+table tr.odd a {
+  color: #FFFFFF;
+}
+/* line 273, /var/www/AppDocumental/css/template.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003273}}
+table tr.selected {
+  color: #7B447B;
+}
+/* line 275, /var/www/AppDocumental/css/template.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003275}}
+table tr.selected a {
+  color: #7B447B;
+}
+/* line 280, /var/www/AppDocumental/css/template.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003280}}
 .inicio-dia {
   background-color: #BDBDBD;
   font-size: 2em;
@@ -333,13 +348,13 @@ table.detail-view tr.odd {
   color: #000000;
   font-weight: bold;
 }
-/* line 279, /var/www/AppDocumental/css/template.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003279}}
+/* line 289, /var/www/AppDocumental/css/template.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003289}}
 .content-dia {
   width: 4em !important;
 }
-/* line 283, /var/www/AppDocumental/css/template.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003283}}
+/* line 293, /var/www/AppDocumental/css/template.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003293}}
 .inicio-mes {
   background-color: #000000;
   color: #FFFFFF;
@@ -347,8 +362,8 @@ table.detail-view tr.odd {
   margin-top: -10px;
   text-align: center;
 }
-/* line 290, /var/www/AppDocumental/css/template.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003290}}
+/* line 300, /var/www/AppDocumental/css/template.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003300}}
 .header-indicadores {
   background-color: #7B507B;
   border: medium none;
@@ -363,8 +378,52 @@ table.detail-view tr.odd {
   text-decoration: none;
   width: 110%;
 }
-/* line 305, /var/www/AppDocumental/css/template.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003305}}
+/* line 315, /var/www/AppDocumental/css/template.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003315}}
 #lista-archivos .items .row-fluid {
   margin-top: 10px;
+}
+/* line 320, /var/www/AppDocumental/css/template.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003320}}
+.table-striped tbody > tr:nth-child(2n+1) > td,
+.table-striped tbody > tr:nth-child(2n+1) > th {
+  background-color: #7B447B;
+}
+/* line 325, /var/www/AppDocumental/css/template.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003325}}
+.fron-fecha,
+.fron-user-atualizado {
+  font-family: Andale Mono;
+  font-size: 10px;
+}
+/* line 329, /var/www/AppDocumental/css/template.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003329}}
+.fron-titulo {
+  font-size: 18px;
+  font-family: georgia, "times new roman", times, serif;
+  font-weight: bold;
+  text-decoration: underline;
+}
+/* line 335, /var/www/AppDocumental/css/template.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003335}}
+.fron-user-atualizado {
+  padding-top: 9px;
+  padding-bottom: 5px;
+}
+/* line 340, /var/www/AppDocumental/css/template.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003340}}
+.fron-image {
+  border: 2px inset;
+  padding: 20px;
+}
+/* line 345, /var/www/AppDocumental/css/template.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003345}}
+.fron-descripcion {
+  margin-top: 5px;
+  margin-bottom: 2px;
+}
+/* line 350, /var/www/AppDocumental/css/template.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003350}}
+#lista-noticias {
+  margin-left: 42px;
 }

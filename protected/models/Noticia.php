@@ -1,15 +1,15 @@
 <?php
 
 /**
- * This is the model class for table "documento".
+ * This is the model class for table "noticia".
  *
- * The followings are the available columns in table 'documento':
+ * The followings are the available columns in table 'noticia':
  * @property integer $id
- * @property string $titulo
  * @property string $imagen
  * @property string $descripcion
  * @property integer $id_user
  * @property string $url_referente
+ * @property string $titulo
  * @property string $fecha_creacion
  *
  * The followings are the available model relations:
@@ -17,7 +17,7 @@
  */
 class Noticia extends CActiveRecord {
 
-    public $imagen;
+    public $FileImagen;
 
     /**
      * @return string the associated database table name
@@ -33,13 +33,18 @@ class Noticia extends CActiveRecord {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('titulo,imagen,descripcion,id_user,url_referente,fecha_creacion', 'required'),
-            array('imagen', 'required', 'on' => 'insert_img'),
-            array('binaryfile', 'file',
+            array('titulo,imagen,descripcion,id_user,fecha_creacion', 'required'),
+            array('FileImagen', 'required', 'on' => 'insert_img'),
+            array('url_referente', 'required', 'on' => 'url_img'),
+            array('FileImagen', 'file',
                 'maxSize' => 1024 * 1024 * 10, // 10MB
                 'tooLarge' => 'El archivo a superado el tamaño permitido.',
+                'types' => 'jpg,jpeg,gif,png', 
                 'allowEmpty' => true
             ),
+            array('id_user', 'numerical', 'integerOnly'=>true),
+            array('imagen', 'length', 'max'=>200),
+            array('url_referente', 'length', 'max'=>100),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
             array('id, titulo, imagen, descripcion, id_user, url_referente, fecha_creacion', 'safe', 'on' => 'search'),
@@ -53,7 +58,7 @@ class Noticia extends CActiveRecord {
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
         return array(
-            'crugeAuthitems' => array(self::BELONGS_TO, 'CrugeUser', 'id_user'),
+            'user' => array(self::BELONGS_TO, 'CrugeUser', 'id_user'),
         );
     }
 
@@ -68,7 +73,8 @@ class Noticia extends CActiveRecord {
             'descripcion' => 'Descripción',
             'id_user' => 'Usuario creador',
             'url_referente' => 'Direccion referente (url de donde fue tomado)',
-            'fecha_creacion' => 'Fecha de creación'
+            'fecha_creacion' => 'Fecha de creación',
+            'FileImagen' => 'Suba una imagen'
         );
     }
 
@@ -89,13 +95,13 @@ class Noticia extends CActiveRecord {
 
         $criteria = new CDbCriteria();
 
-        $criteria->compare('id', $this->id);
-        $criteria->compare('titulo', $this->titulo, true);
-        $criteria->compare('imagen', $this->imagen);
-        $criteria->compare('descripcion', $this->descripcion, true);
-        $criteria->compare('id_user', $this->id_user, true);
-        $criteria->compare('url_referente', $this->url_referente, true);
-        $criteria->compare('fecha_creacion', $this->fecha_creacion, true);
+        $criteria->compare('id',$this->id);
+        $criteria->compare('imagen',$this->imagen,true);
+        $criteria->compare('descripcion',$this->descripcion,true);
+        $criteria->compare('id_user',$this->id_user);
+        $criteria->compare('url_referente',$this->url_referente,true);
+        $criteria->compare('titulo',$this->titulo,true);
+        $criteria->compare('fecha_creacion',$this->fecha_creacion,true);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,

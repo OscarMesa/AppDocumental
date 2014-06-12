@@ -2,7 +2,7 @@
 <?php $this->beginContent('//layouts/main');
 ?>
 <div class="span-19">
-    <div id="content" class="<?php echo strpos(Yii::app()->controller->getRoute(), 'documento') !== false ? 'seccion-1' : ''; ?>">
+    <div id="content" class="<?php echo strpos(Yii::app()->controller->getRoute(), 'documento') || strpos(Yii::app()->controller->getRoute(), 'noticia') !== false ? 'seccion-1' : ''; ?>">
         <?php
         echo $content;
         ?>

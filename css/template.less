@@ -55,7 +55,7 @@ h1{
     background-color: #7B507B;
     margin: none;
     position: absolute;
-    margin-left: 4em;
+    margin-left: 2em;
     padding: 19px 16px 36px;
 
 }
@@ -63,7 +63,7 @@ h1{
 .navbar .nav{
     height: 67px; 
     margin-top: -13px;
-    margin-left: 22em;
+    margin-left: 16em;
 }
 
 .navbar .nav > li{
@@ -114,7 +114,7 @@ h1{
 }
 
 .menu_salir{
-    padding-left: 11em;
+    padding-left: 7em;
     padding-top: 23px !important;
 }
 .menu_usuarios{
@@ -194,7 +194,7 @@ div.view {
 
 #menu-lateral{
     margin-left: 10px;
-     margin-top: -25px;
+     margin-top: -4px;
     /*    height: 468px;
         padding-left: 13px;*/
 }
@@ -252,7 +252,7 @@ thead th{
 .navbar-inverse .NoAppBrand{
     background: none;
     padding: 0;
-    margin-left: 7em;
+    margin-left: 3em;
     img{
         max-width: 85%;
     }
@@ -262,9 +262,19 @@ thead th{
     width: 12.7em;
 }
 
-table.detail-view tr.odd{
+table tr.odd{
     background: none repeat scroll 0 0 #7B447B;
     color: #FFFFFF;
+    a{
+        color: #FFFFFF;
+    }
+}
+
+table tr.selected{
+    color: #7B447B;
+    a{
+        color: #7B447B;
+    }
 }
 
 .inicio-dia{
@@ -304,4 +314,39 @@ table.detail-view tr.odd{
 
 #lista-archivos .items .row-fluid {
     margin-top: 10px;
+}
+
+
+.table-striped tbody > tr:nth-child(2n+1) > td, .table-striped tbody > tr:nth-child(2n+1) > th {
+    background-color: #7B447B;
+}
+
+
+.fron-fecha, .fron-user-atualizado{
+    font-family: Andale Mono;
+    font-size: 10px;
+}
+.fron-titulo{
+   font-size: 18px;
+   font-family: georgia, "times new roman", times, serif;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.fron-user-atualizado{
+    padding-top: 9px;
+    padding-bottom: 5px;
+}
+
+.fron-image {
+    border: 2px inset;
+    padding: 20px;
+}
+
+.fron-descripcion{
+    margin-top: 5px;
+    margin-bottom: 2px;
+}
+
+#lista-noticias{
+    margin-left: 42px;
 }

@@ -41,6 +41,14 @@
                         array('label' => 'Documentos', 'url' => array('/documento'),
                             'visible' => !Yii::app()->user->isGuest,
                             'active'=>$this->id=='documento'?true:false),
+                        array('label' => 'Noticias '
+                            , 'url' => array('/noticia')
+                            , 'visible' => Yii::app()->user->checkAccess('action_noticia_admin')
+                            , 'itemOptions' => array(
+                                'class' => ''
+                            )
+                            ,'active'=>$this->id=='noticia'?true:false
+                        ),
                         array('label' => 'Sobre nosotros', 'url' => array('/site/page', 'view' => 'about')),
                         array('label' => 'Contactanos', 'url' => array('/site/contact')),
                         array('label' => 'Ingresar '

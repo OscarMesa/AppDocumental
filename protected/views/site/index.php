@@ -39,6 +39,15 @@ $this->widget('bootstrap.widgets.TbCarousel', array(
         </div>
     </div>
     <div class="span8">
-        <img src="<?php echo Yii::app()->getBaseUrl(true) ?>/images/noticias.png"/>
+<!--        <img src="<?php //echo Yii::app()->getBaseUrl(true) ?>/images/noticias.png"/>-->
+        <?php
+            Yii::import('application.vendor.Utilidades');
+            $this->widget('bootstrap.widgets.TbListView', array(
+                'dataProvider' => $dataProviderNot,
+                'itemView' => 'application.views.noticia._view_1',
+                'summaryText'=>'',
+                'id' => 'lista-noticias'
+            ));
+            ?>
     </div>
 </section>

@@ -33,8 +33,18 @@ class SiteController extends Controller {
                  'pagination' => array('pageSize' => 2,),
                  'totalItemCount' => 2,
             ));
+        
+        $criteria_noticias = new CDbCriteria();
+        $criteria_noticias->limit = 5;
+        $criteria_noticias->order = "fecha_creacion DESC";
+        $dataProviderNot = new CActiveDataProvider('Noticia', array(
+                 'criteria' => $criteria_noticias,
+                 'pagination' => array('pageSize' => 5,),
+                 'totalItemCount' => 5,
+            ));
         $this->render('index',array(
             'dataProviderDoc' => $dataProviderDoc,
+            'dataProviderNot' => $dataProviderNot
         ));
     }
 
@@ -54,6 +64,7 @@ class SiteController extends Controller {
      * Displays the contact page
      */
     public function actionContact() {
+        Yii::import('application.vendor.Utilidades');
         $model = new ContactForm;
         if (isset($_POST['ContactForm'])) {
             $model->attributes = $_POST['ContactForm'];
@@ -80,8 +91,8 @@ class SiteController extends Controller {
                 $message = new YiiMailMessage();
                 $message->subject = $model->subject;
                 $message->setBody($model->body, 'text/html');
-                // if ($usuario->email == 'oscarmesa.elpoli@gmail.com') {
-                $message->addTo($model->email);
+                
+                $message->addTo(Utilidades::$mail);
                 $message->from = $model->email;
                 Yii::app()->mail->send($message);
                 Yii::app()->user->setFlash('contact', 'Gracias por contactar con nosotros. Le responderemos tan pronto como sea posible.');
