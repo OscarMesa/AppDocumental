@@ -430,5 +430,5 @@ table tr.selected a {
 /* line 354, /var/www/AppDocumental/css/template.less */
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\00003354}}
 .table.detail-view tr.odd {
-  background: none repeat scroll 0 0 #7b507b;
+  background: none repeat scroll 0 0 #7b507b !important;
 }
