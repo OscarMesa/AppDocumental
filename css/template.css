@@ -50,7 +50,7 @@ h1 {
 /* line 44, /var/www/AppDocumental/css/template.less */
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/AppDocumental\/css\/template\.less}line{font-family:\0000344}}
 .navbar-inverse .navbar-inner {
-  background: url(../images/iconos/heaad.png) no-repeat;
+  background: #7b507b;
   background-size: auto auto;
   border-color: #FFFFFF;
 }

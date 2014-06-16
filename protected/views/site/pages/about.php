@@ -13,3 +13,7 @@ $this->breadcrumbs=array(
 <br/><br/>
 Tenemos una amplia experiencia de más de 25 años en el sector y contamos con un excelente grupo de profesionales que aportan su conocimiento, confidencialidad, transparencia y profesionalismo.
 </p>
+<div style="text-align: center;margin-top: 34px;" id="ubicacion">
+    <img style="" src="<?php echo Yii::app()->getBaseUrl(true);?>/images/edificio.png"/>
+</div>
+<p style="text-align: center;display: block;font-family: Liberation Mono;font-size: 12px;">Estamos ubicacados en la Carrera 43A No. 16A Sur - 38 Oficina 605 Edificio DHL</p>
