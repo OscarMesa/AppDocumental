@@ -17,7 +17,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 <?php //echo $form->textFieldRow($model, 'id_user', array('class' => 'span5')); ?>
 <div class="form-actions">
     <label class="radio">
-        <input type="radio" value="url-img" name="option-img" id="url-img" <?php echo $model->scenario!="insert_img"?"checked":"";?>>
+        <input type="radio" value="url-img" name="option-img" id="url-img" <?php echo $model->scenario=="url_img"?"checked":"";?>>
         URL imagen
     </label>
 
@@ -25,7 +25,12 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
         <input type="radio" name="option-img" id="subir-img" value="subir-img" <?php echo $model->scenario=="insert_img"?"checked":"";?>>
         Subir imagen
     </label>
-    <div id="content-img-url" style="display: <?php echo $model->scenario!="insert_img"?"block":"none";?>">
+
+    <label class="radio">
+        <input type="radio" name="option-img" id="not-img" value="not-img" <?php echo $model->scenario!="insert_img" && $model->scenario!="url_img"?"checked":"";?>>
+        Sin imagen
+    </label>
+    <div id="content-img-url" style="display: <?php echo $model->scenario=="url_img"?"block":"none";?>">
         <?php echo $form->textFieldRow($model, 'imagen', array('class' => 'span5', 'maxlength' => 200)); ?>
     </div>
     <div id="content-img-file" style="display: <?php echo $model->scenario=="insert_img"?"block":"none";?>">
@@ -58,7 +63,12 @@ Yii::app()->clientScript->registerScript('cambioRadioButton', "$('#url-img').on(
     $('#subir-img').on('change', function() {
         setTimeout(function(){ $('#content-img-file').show('clip');},500);
         $('#content-img-url').fadeOut();
-    });", 4);
+    });
+    $('#not-img').on('change', function() {
+        $('#content-img-url').fadeOut();
+        $('#content-img-file').fadeOut();
+    });
+    ", 4);
 ?>
 
 

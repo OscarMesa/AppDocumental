@@ -69,8 +69,13 @@
                                             <table style="margin-top: 0px;" width="580" align="center" border="0" cellspacing="0" cellpadding="0">
                                                 <tr>
                                                     <td width="400">
-                                                        <span style="text-align:justify; font-size: 13px; color: #0A0A04; line-height:18px; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif"><div>Te informamos que <b><?php echo $documento->u_modificador->username; ?></b> a actualizado un nuevo documento: <b><?php echo $documento->nombre_documento; ?></b>. Te estamos confirmando esta acción con el fin de que usted pueda ingresar y ver el contenido de este nuevo archivo.</div></span>
-                                                        <br/><p style="color: #7B507B;font-weight: bold">¡Gestion de documentos!</p>
+                                                        <span style="text-align:justify; font-size: 13px; color: #0A0A04; line-height:18px; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif"><div>Informamos que se encuentra disponible en nuestra página el documento: <b><?php echo $documento->nombre_documento; ?></b>.</div></span>
+                                                        <?php if($documento->mensaje_correo != NULL && $documento->mensaje_correo != ""){
+                                                            ?>
+                                                        <br/><div><b>Nota: </b><?php echo ucfirst($documento->mensaje_correo); ?></div>
+                                                        <?php }?>
+                                                        <br/><div>Para ingresar, favor pulsar el botón.</div>
+                                                        <br/><br/><p style="color: #7B507B;font-weight: bold">¡Gestion de documentos!</p>
                                                     </td>
                                                     <td width="100">
                                                         <a href="<?php echo Yii::app()->getBaseUrl(true).'/documento/'.$documento->id; ?>" style="text-decoration: none;">

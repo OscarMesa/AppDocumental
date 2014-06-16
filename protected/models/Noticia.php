@@ -33,9 +33,9 @@ class Noticia extends CActiveRecord {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('titulo,imagen,descripcion,id_user,fecha_creacion', 'required'),
+            array('titulo,descripcion,id_user,fecha_creacion', 'required'),
             array('FileImagen', 'required', 'on' => 'insert_img'),
-            array('url_referente', 'required', 'on' => 'url_img'),
+            array('imagen', 'required', 'on' => 'url_img'),
             array('FileImagen', 'file',
                 'maxSize' => 1024 * 1024 * 10, // 10MB
                 'tooLarge' => 'El archivo a superado el tamaño permitido.',

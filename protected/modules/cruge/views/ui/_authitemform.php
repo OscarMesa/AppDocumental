@@ -28,25 +28,25 @@
 		ejemplo: <span class='code'>":Edita tu Perfil{menuprincipal}"</span></div>
 		<?php } ?>
 	</div>
-	<div class='row'>
-		<?php echo $form->labelEx($model,'businessRule'); ?>
-		<?php echo $form->textField($model,'businessRule',array('size'=>50,'maxlength'=>512)); ?>
-		<?php echo $form->error($model,'businessRule'); ?>
+<!--	<div class='row'>
+		<?php // echo $form->labelEx($model,'businessRule'); ?>
+		<?php // echo $form->textField($model,'businessRule',array('size'=>50,'maxlength'=>512)); ?>
+		<?php // echo $form->error($model,'businessRule'); ?>
 		<p class='hint'>
-			<?php echo CrugeTranslator::t("define una regla de negocio que sera ejecutada cada vez que este item sea evaluado mediante una llamada a checkAccess, el argumento params es entregado a checkAccess de forma opcional:"); ?>
+			<?php // echo CrugeTranslator::t("define una regla de negocio que sera ejecutada cada vez que este item sea evaluado mediante una llamada a checkAccess, el argumento params es entregado a checkAccess de forma opcional:"); ?>
 			<br/>
-			<?php echo CrugeTranslator::t(
-			"regla de ejemplo:"); ?>
+			<?php // echo CrugeTranslator::t(
+//			"regla de ejemplo:"); ?>
 			<br/>
 			<div class='code'>return Yii::app()->user->id==$params["post"]->authID;</div>
 			<br/>
 			<div class='code'>
-				$params = ...<?php echo CrugeTranslator::t("cualquier cosa"); ?>...;<br/>
-				if(Yii::app()->user->checkAccess('<?php echo $model->name;?>', $params)){ ... }
+				$params = ...<?php //echo CrugeTranslator::t("cualquier cosa"); ?>...;<br/>
+				if(Yii::app()->user->checkAccess('<?php //echo $model->name;?>', $params)){ ... }
 			</div>
 			<br/>
 		</p>
-	</div>
+	</div>-->
 </div>
 
 <div class="row buttons">

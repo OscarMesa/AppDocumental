@@ -21,17 +21,25 @@
             <div class="header-busquedas">Archivos</div>
             <div class="fechas-busqueda">
                 <?php
-                $list = Yii::app()->db->createCommand('SELECT DATE_FORMAT( fecha_creacion, "%Y" ) "year", DATE_FORMAT( fecha_creacion, "%m" ) " month" FROM `documento` GROUP BY DATE_FORMAT( fecha_creacion, "%Y-%m" ) ORDER BY fecha_creacion DESC')->queryAll();
-                foreach ($list as $value) {
-                    echo '<a href="#" class="filter" type="date" value="'. $value['year'] . '-' . $value['month'] .'">' . $value['year'] . ' | ' . date('M', mktime(0, 0, 0, $value['month'], 1, 2000)) . '</a><br/>';
-                }
+//                $list = Yii::app()->db->createCommand('SELECT DATE_FORMAT( fecha_creacion, "%Y" ) "year", DATE_FORMAT( fecha_creacion, "%m" ) " month" FROM `documento` GROUP BY DATE_FORMAT( fecha_creacion, "%Y-%m" ) ORDER BY fecha_creacion DESC')->queryAll();
+//                foreach ($list as $value) {
+//                    echo '<a href="#" class="filter" type="date" value="'. $value['year'] . '-' . $value['month'] .'">' . $value['year'] . ' | ' . date('M', mktime(0, 0, 0, $value['month'], 1, 2000)) . '</a><br/>';
+//                }
                 ?>
+                <div id="fixed-tree"></div>
             </div>
             <div class="header-busquedas">Categorías</div>
             <!--        http://designwithpc.com/Plugins/ddSlick#demo-->
             <?php
-            $categorias = CHtml::listData(Categoria::model()->findAll(), 'id_cat', 'nombre');
+            $categorias = array('all'=>"Todos") + CHtml::listData(Categoria::model()->findAll(), 'id_cat', 'nombre');
             echo CHtml::dropDownList('categorias-select', '----', $categorias);
+            ?>
+            <br/><br/>
+            <div class="header-busquedas">Tipos de documentos</div>
+            <!--        http://designwithpc.com/Plugins/ddSlick#demo-->
+            <?php
+            $tipos = array('all'=>"Todos") + CHtml::listData(TipoDocumento::model()->findAll(), 'id', 'nombre');
+            echo CHtml::dropDownList('categorias-select', '----', $tipos,array('id'=>'tipos_doc_select'));
             ?>
         </div>
     <?php } ?>

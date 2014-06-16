@@ -46,7 +46,7 @@ $('.search-form form').submit(function(){
 
 <?php
 $dataProvider = $model->search();
-$dataProvider->pagination->pageSize = 6;
+$dataProvider->pagination->pageSize = 10;
 $this->widget('bootstrap.widgets.TbGridView', array(
     'type'=>'striped bordered condensed',
     'id' => 'documento-grid',
@@ -55,7 +55,12 @@ $this->widget('bootstrap.widgets.TbGridView', array(
     'columns' => array(
         'id',
         'nombre_documento',
-        'tipo',
+        array(
+            'name' => 'id_tipo',
+            'value' => '$data->tipo_doc->nombre',
+            'type' => 'raw',
+            'filter' => CHtml::listData(TipoDocumento::model()->findAll(), 'id', 'nombre'),
+        ),
         array(
             'name' => 'binaryfile',
             'value' => function($data) {

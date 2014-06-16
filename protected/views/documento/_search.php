@@ -15,7 +15,7 @@
 	
 		<?php echo $form->textFieldRow($model,'nombre_documento',array('class'=>'','size'=>60,'maxlength'=>100)); ?>
 	
-		<?php echo $form->textFieldRow($model,'tipo',array('class'=>'','size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->dropDownListRow($model,'id_tipo',CHtml::listData(TipoDocumento::model()->findAll(), 'id', 'nombre'),array()); ?>
 
 </fieldset>
 

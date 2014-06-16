@@ -12,6 +12,7 @@
  * @property string $tipo
  * @property string $descripcion
  * @property date $fecha_creacion
+ * @property date $id_tipo
  *
  * The followings are the available model relations:
  * @property CrugeUser $u_modificador
@@ -21,6 +22,7 @@
 class Documento extends CActiveRecord {
 
     public $binaryfile;
+    public $mensaje_correo;
 
     /**
      * @return string the associated database table name
@@ -36,7 +38,7 @@ class Documento extends CActiveRecord {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('nombre_documento,id_usuario_modificador', 'required'),
+            array('nombre_documento,id_usuario_modificador,id_tipo', 'required'),
             array('binaryfile', 'required', 'on' => 'insert'),
             array('nombre_documento', 'length', 'max' => 100),
             array('binaryfile', 'file',
@@ -45,7 +47,7 @@ class Documento extends CActiveRecord {
                 'allowEmpty' => true
             ),
             array('descripcion', 'safe'),
-            array('fecha_creacion', 'safe'),
+            array('fecha_creacion,mensaje_correo', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
             array('id,  id_usuario_modificador, nombre_doc_bd, nombre_doc, nombre_documento, tipo', 'safe', 'on' => 'search'),
@@ -62,6 +64,7 @@ class Documento extends CActiveRecord {
             'crugeAuthitems' => array(self::MANY_MANY, 'CrugeAuthitem', 'documento_authitem(id_documento, name_authitem)'),
             'perfiles' => array(self::MANY_MANY, 'CrugeAuthitem', 'documento_authitem(name_authitem, id_documento)'),
             'u_modificador' => array(self::BELONGS_TO, 'CrugeUser', 'id_usuario_modificador'),
+            'tipo_doc' => array(self::BELONGS_TO, 'TipoDocumento', 'id_tipo'),
             'categorias' => array(self::MANY_MANY, 'Categoria', 'categorias_documentos(id_documento,id_cat)'),
         );
     }
@@ -79,7 +82,9 @@ class Documento extends CActiveRecord {
             'binaryfile' => 'Archivo Adjunto',
             'tipo' => 'Tipo',
             'descripcion' => 'Descripción',
-            'fecha_creacion' => 'Fecha de cracion'
+            'fecha_creacion' => 'Fecha de cracion',
+            'id_tipo' => 'Tipo de documento',
+            'mensaje_correo'=>'Mensaje (Este mensaje se adjunta en el correo electronico, por lo que es opcional)'
         );
     }
 
@@ -108,6 +113,7 @@ class Documento extends CActiveRecord {
         $criteria->compare('tipo', $this->tipo, true);
         $criteria->compare('descripcion', $this->descripcion, true);
         $criteria->compare('fecha_creacion', $this->fecha_creacion, true);
+        $criteria->compare('id_tipo', $this->id_tipo, true);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,

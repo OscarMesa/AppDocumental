@@ -10,7 +10,8 @@ $this->breadcrumbs=array(
 
 $this->menu = array(
     array('label' => 'Operaciones'),
-    array('label' => 'Crear Documento','active' => true, 'icon' => 'pencil', 'url' => '#'),
+    array('label' => 'Modificar Documento','active' => true, 'icon' => 'pencil', 'url' => '#'),
+    array('label' => 'Crear Documento', 'icon' => 'pencil', 'url' => array('create')),
     array('label' => 'Administrador de Documentos', 'icon' => 'eye-open', 'url' => array('admin')),
     array('label' => 'Lista de Documentos', 'icon' => 'list-alt', 'url' => array('index')),
 );

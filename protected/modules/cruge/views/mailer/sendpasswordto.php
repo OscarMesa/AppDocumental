@@ -70,7 +70,8 @@
                                                     <td width="193"><p style="color: #7B507B; font-weight: bold; font-size: 18px;"><?php
                                                             $nombre = CrugeFieldValue::model()->find('iduser=? AND idfield=1', array($model->iduser));
                                                             $genero = CrugeFieldValue::model()->find('iduser=? AND idfield=2', array($model->iduser));
-                                                            echo ucwords(($genero->value == 1 ? 'señor' : 'señora') . ' ' . $nombre->value);
+                                                            if(count($genero)>0)
+                                                                echo ucwords(($genero->value == 1 ? 'señor' : 'señora') . ' ' . $nombre->value);
                                                             ?></p>
                                                         <p>Las credenciales de su cuenta son:</p>
                                                     </td>

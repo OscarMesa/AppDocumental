@@ -17,6 +17,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
         <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/unsemantic/assets/stylesheets/unsemantic-grid-base.css" /> 
        <?php Yii::app()->clientScript->registerCssFile(Yii::app()->request->baseUrl . '/css/template.css'); ?>
+       <?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl . '/js/app.js'); ?>
 
 
         <title><?php echo CHtml::encode($this->pageTitle); ?></title>
@@ -50,32 +51,37 @@
                             ,'active'=>$this->id=='noticia'?true:false
                         ),
                         array('label' => 'Sobre nosotros', 'url' => array('/site/page', 'view' => 'about')),
-                        array('label' => 'Contactanos', 'url' => array('/site/contact')),
+                        array('label' => 'Contáctenos', 'url' => array('/site/contact')),
                         array('label' => 'Ingresar '
                             , 'url' => Yii::app()->user->ui->loginUrl
                             , 'visible' => Yii::app()->user->isGuest
                             , 'itemOptions' => array(
+                                'id' => 'mnu-entrar',
                                 'class' => 'menu_ingreso menu_entrar'
                             ),
+                        ),
+                        array('label' => 'Usuarios'
+                            , 'url' => Yii::app()->user->ui->userManagementAdminUrl
+                            , 'visible' => Yii::app()->user->getIsSuperAdmin()
+                            ,'active'=>$this->id=='ui'?true:false
+                            , 'itemOptions' => array(
+                                'id' => 'mnu-usuario',
+                                'class' => 'menu_usuarios'
+                            )
                         ),
                         array('label' => 'Salir '
                             , 'url' => Yii::app()->user->ui->logoutUrl
                             , 'visible' => !Yii::app()->user->isGuest
                             , 'itemOptions' => array(
+                                'id' => 'mnu-salir',
                                 'class' => 'menu_ingreso menu_salir'
                             ),
-                        ),
-                        array('label' => ' |  Usuarios'
-                            , 'url' => Yii::app()->user->ui->userManagementAdminUrl
-                            , 'visible' => Yii::app()->user->getIsSuperAdmin()
-                            , 'itemOptions' => array(
-                                'class' => 'menu_usuarios'
-                            )
                         )
                     ),
                 ),
             ),
         ));
+      //  echo $this->id;exit();
         ?>
         <div class="container" id="page">
 

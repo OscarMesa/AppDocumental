@@ -562,6 +562,22 @@ class UiController extends Controller
         header("Content-type: application/json");
         echo CJSON::encode(array('description' => $item->getDescription()));
     }
+    
+    /**
+     * Con este metodo se busca asignar los permisos de lectura a cualquier usuario que se le cree un rol.
+     * @author Oskar
+     * @param type $nameRol
+     */
+    public function asignarPermisosDeLectura($nameRol)
+    {
+        Yii::import('application.modules.cruge.components.CrugeAuthManager');
+        $permisosLectura = CrugeAuthitem::model()->findAll('name LIKE "%index%" OR name LIKE "%view%"');
+        $crugeAuthManager = new CrugeAuthManager();
+        $crugeAuthManager->init();
+        foreach ($permisosLectura as $permiso) {
+            $crugeAuthManager->addItemChild($nameRol, $permiso->name);
+        }
+    }
 
     // aqui type es uno de los valores de
     // CAuthItem::TYPE_ROLE,CAuthItem::TYPE_TASK,CAuthItem::TYPE_OPERATION
@@ -569,7 +585,6 @@ class UiController extends Controller
     // para indicar la creacion de una tarea enlazada a otra
     public function actionRbacAuthItemCreate($type)
     {
-
         $editor = new CrugeAuthItemEditor('insert');
         $editor->name = "";
         $editor->description = "";
@@ -609,7 +624,12 @@ class UiController extends Controller
                     $editor->description,
                     $editor->businessRule
                 );
-
+                
+                
+//                echo '<pre>';
+//                print_r($editor->name);
+//                exit();
+                $this->asignarPermisosDeLectura($editor->name);
 
                 // se va de vuelta a la lista de donde vino
                 if ($type == CAuthItem::TYPE_ROLE) {

@@ -10,3 +10,4 @@ data/attachment
 index.php
 /protected/config/
 !/protected/views/noticia/index.php
+!/protected/views/indicadores/index.php

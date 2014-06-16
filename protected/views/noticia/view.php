@@ -23,6 +23,7 @@ $this->widget('bootstrap.widgets.TbDetailView',array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
+                'titulo',
 		'imagen',
 		'descripcion',
             array(
@@ -33,7 +34,6 @@ $this->widget('bootstrap.widgets.TbDetailView',array(
                    },
                ),
 		'url_referente',
-		'titulo',
 		'fecha_creacion',
 	),
 )); ?>

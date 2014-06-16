@@ -27,8 +27,6 @@ class DocumentoController extends Controller {
     public function accessRules() {
         Yii::app()->user->loginUrl = array("/cruge/ui/login");
 
-
-
         return array(
             array('allow', 'actions' => array(
                     'login', 'passwordrecovery', 'captcha'), 'users' => array('*'),),
@@ -71,12 +69,11 @@ class DocumentoController extends Controller {
                 $model->tipo = $file->type;
             }
 
-
             if ($model->save()) {
+                if(isset($_POST['Categoria']['cat_id']))
+                        $model->asignarCategoriasDocumento($_POST['Categoria']['cat_id']);
                 if (isset($_POST['CrugeAuthitem']['name'])) {
                     $model->asignarPerfilesDocumento($_POST['CrugeAuthitem']['name']);
-                    if (isset($_POST['Categoria']['cat_id']))
-                        $model->asignarCategoriasDocumento($_POST['Categoria']['cat_id']);
                     $usuarios = $this->obtenerUsuariosPerfiles($_POST['CrugeAuthitem']['name']);
                     $this->enviarMailUsuariosDoc($usuarios, $model);
                 }
@@ -174,21 +171,35 @@ class DocumentoController extends Controller {
      * Lists all models.
      */
     public function actionIndex() {
-       $criteria = new CDbCriteria();
-       $criteria->order = "fecha_creacion DESC";
-       if (isset($_GET['ajax'])) {
-            if($_GET['type'] == 'date')
-            {
-                $criteria->addCondition('fecha_creacion  BETWEEN ? AND ?');
-                $criteria->params = array($_GET['value'].'-01',$_GET['value'].'-31');
-            }else if($_GET['type'] == 'category'){
-                $criteria->join = " INNER JOIN categorias_documentos t2 ON( t.id = t2.id_documento)";
-                $criteria->addCondition('t2.id_cat = ?');
-                $criteria->params = array($_GET['value']);
+        $criteria = new CDbCriteria();
+        $criteria->order = "fecha_creacion DESC";
+        if (isset($_GET['ajax']) && isset($_GET['type'])) {
+            $params = array();
+            if ($_GET['type'] == 'date' || isset($_GET['value'])) {
+                if ($_GET['value'] != 'Todos') {
+                    $criteria->addCondition('fecha_creacion  BETWEEN ? AND ?');
+                    $params[] = $_GET['value'] . '-01';  $params[] = $_GET['value'] . '-31';
+                }
+            } 
+            if ($_GET['type'] == 'category' || isset($_GET['value_cat'])) {
+                if ($_GET['value_cat'] != 'all') {
+                    $criteria->join .= " INNER JOIN categorias_documentos t2 ON( t.id = t2.id_documento)";
+                    $criteria->addCondition('t2.id_cat = ?');
+                    $params[] = ($_GET['value_cat']);
+                }
+            } 
+            if ($_GET['type'] == 'tipo_documento' || isset($_GET['value_tipo'])) {
+                if ($_GET['value_tipo'] != 'all') {
+                    $criteria->join .= " INNER JOIN  tipo_documento t3 ON( t.id_tipo = t3.id)";
+                    $criteria->addCondition('t3.id = ?');
+                    $params[] = ($_GET['value_tipo']);
+                }
             }
-             $dataProvider = new CActiveDataProvider('Documento', array(
-                 'criteria' => $criteria, 
-                 'pagination' => array(
+            $criteria->params = $params;
+            print_r($criteria->params);
+            $dataProvider = new CActiveDataProvider('Documento', array(
+                'criteria' => $criteria,
+                'pagination' => array(
                     'pageSize' => 10
                 )
             ));
@@ -200,19 +211,18 @@ class DocumentoController extends Controller {
                 )
             ));
         }
-     
+
         $this->render('index', array(
             'dataProvider' => $dataProvider,
         ));
     }
-    
-    public function actionMail()
-    {
+
+    public function actionMail() {
         Yii::import('application.models.CrugeUser');
         $usuario = CrugeUser::model()->findByPk(1);
-       $documento = Documento::model()->findByPk(10);
-       echo $this->renderPartial('application.views.mail.notificacionArchivo',array(
-           'usuario' => $usuario,
+        $documento = Documento::model()->findByPk(10);
+        echo $this->renderPartial('application.views.mail.notificacionArchivo', array(
+            'usuario' => $usuario,
             'documento' => $documento
         ));
     }

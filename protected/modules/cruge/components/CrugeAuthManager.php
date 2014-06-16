@@ -335,12 +335,12 @@ class CrugeAuthManager extends CAuthManager implements IAuthManager
             ->select()
             ->from($this->getTableName('authitem'))
             ->where(
-            'name=:name1 OR name=:name2',
-            array(
-                ':name1' => $itemName,
-                ':name2' => $childName
+                'name=:name1 OR name=:name2',
+                array(
+                    ':name1' => $itemName,
+                    ':name2' => $childName
+                )
             )
-        )
             ->queryAll();
 
         if (count($rows) == 2) {
@@ -352,6 +352,7 @@ class CrugeAuthManager extends CAuthManager implements IAuthManager
                 $parentType = $rows[1]['type'];
             }
             $this->checkItemChildType($parentType, $childType);
+           // echo $childType;exit();
             if ($this->detectLoop($itemName, $childName)) {
                 throw new CrugeException(Yii::t(
                     'yii',

@@ -12,9 +12,10 @@ class NoticiaController extends Controller {
      * @return array action filters
      */
     public function filters() {
-        return array(
-            'accessControl', // perform access control for CRUD operations
-        );
+        return array('accessControl', array('CrugeAccessControlFilter'));
+//        return array(
+//            'accessControl', // perform access control for CRUD operations
+//        );
     }
 
     /**
@@ -75,8 +76,10 @@ class NoticiaController extends Controller {
                     $model->imagen = Yii::app()->getBaseUrl(true) . '/data/noticias/' . $name;
                 }
                 $model->scenario = "insert_img";
-            } else {
+            } else if($_POST['option-img'] == "url-img"){
                 $model->scenario = "url_img";
+            }else{
+                $model->scenario = "insert";
             }
             if ($model->save()) {
                 if ($_POST['option-img'] == "subir-img") {
@@ -115,8 +118,10 @@ class NoticiaController extends Controller {
                     $model->imagen = Yii::app()->getBaseUrl(true) . '/data/noticias/' . $name;
                 }
                 $model->scenario = "insert_img";
-            } else {
+            } else if($_POST['option-img'] == "url-img") {
                 $model->scenario = "url_img";
+            }else{
+                $model->scenario = "update";
             }
 
             if ($model->save()) {
@@ -134,7 +139,7 @@ class NoticiaController extends Controller {
     }
 
     public function removeImage($name) {
-        if (file_exists(dirname(Yii::app()->request->scriptFile) . '/data/noticias/' . $name))
+        if (!is_dir(dirname(Yii::app()->request->scriptFile) . '/data/noticias/' . $name) && file_exists(dirname(Yii::app()->request->scriptFile) . '/data/noticias/' . $name))
             unlink(dirname(Yii::app()->request->scriptFile) . '/data/noticias/' . $name);
     }
 

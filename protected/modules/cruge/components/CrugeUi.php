@@ -303,13 +303,13 @@ class CrugeUi extends CComponent
             ,
                                         'icon'=>'list-alt',    
             ),
-            array(
-                'label' => CrugeTranslator::t('admin', 'Create Profile Field')
-            ,
-                'url' => $this->getFieldsAdminCreateUrl()
-            ,
-                                        'icon'=>'user',       
-            ),
+//            array(
+//                'label' => CrugeTranslator::t('admin', 'Create Profile Field')
+//            ,
+//                'url' => $this->getFieldsAdminCreateUrl()
+//            ,
+//                                        'icon'=>'user',       
+//            ),
             array('label' => CrugeTranslator::t('admin', 'Roles and Assignments')),
             array(
                 'label' => CrugeTranslator::t('admin', 'Roles')
@@ -318,20 +318,20 @@ class CrugeUi extends CComponent
             ,
                                         'icon'=>'cog',
             ),
-            array(
-                'label' => CrugeTranslator::t('admin', 'Tasks')
-            ,
-                'url' => $this->getRbacListTasksUrl()
-            ,
-                                        'icon'=>'tasks',    
-            ),
-            array(
-                'label' => CrugeTranslator::t('admin', 'Operations')
-            ,
-                'url' => $this->getRbacListOpsUrl()
-             ,
-                                        'icon'=>'chevron-right',   
-            ),
+//            array(
+//                'label' => CrugeTranslator::t('admin', 'Tasks')
+//            ,
+//                'url' => $this->getRbacListTasksUrl()
+//            ,
+//                                        'icon'=>'tasks',    
+//            ),
+//            array(
+//                'label' => CrugeTranslator::t('admin', 'Operations')
+//            ,
+//                'url' => $this->getRbacListOpsUrl()
+//             ,
+//                                        'icon'=>'chevron-right',   
+//            ),
             array(
                 'label' => CrugeTranslator::t('admin', 'Assign Roles to Users')
             ,

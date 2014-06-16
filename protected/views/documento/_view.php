@@ -38,7 +38,6 @@ foreach ($extenciones as  $value) {
                 echo strftime('%B %e de %Y', strtotime($data->fecha_creacion)); //echo CHtml::encode(date('F d de Y',  strtotime($data->fecha_cheacion)));  ?><br/>
 
                 <p><?php echo CHtml::encode(ucwords(Utilidades::getSubString($data->descripcion, 200))); ?>&nbsp<?php echo '<a href =' . Yii::app()->getBaseUrl(true) . '/data/attachment/' . $data->nombre_doc_bd . ' download="' . $data->nombre_doc . '">Descargar</a>'; ?></p>
-
             </div>
         </td>
         <!--</div>-->

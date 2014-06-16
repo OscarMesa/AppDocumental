@@ -8,11 +8,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu = array(
-    array('label' => 'Operaciones'),
-    array('label' => 'Crear Documento','active' => true, 'icon' => 'pencil', 'url' => '#'),
+    array('label' => 'Operaciones'), 
+    array('label' => 'Ver documento','active' => true, 'icon' => 'icon-fullscreen', 'url' => '#'),
     array('label'=>'Actualizar Documento','icon' => 'edit', 'url'=>array('update', 'id'=>$model->id)),
     array('label'=>'Eliminar Documento', 'url'=>'#','icon' => 'remove', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'¿Está seguro que desea eliminar este elemento?')),
     array('label' => 'Administrador de Documentos', 'icon' => 'eye-open', 'url' => array('admin')),
+    array('label' => 'Crear Documento', 'icon' => 'pencil', 'url' => array('create')),
     array('label' => 'Lista de Documentos', 'icon' => 'list-alt', 'url' => array('index')),
 );
 ?>
@@ -24,7 +25,11 @@ $this->menu = array(
 	'attributes'=>array(
 		'id',
 		'nombre_documento',
-		'tipo',
+		array( 
+                    'label'=>'Tipo de documento',
+                    'type'=>'raw',
+                    'value'=> $model->tipo_doc->nombre
+                    ),
 		array(               // related city displayed as a link
             'label'=>'Descargar documento',
             'type'=>'raw',

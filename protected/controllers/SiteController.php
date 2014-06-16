@@ -42,9 +42,11 @@ class SiteController extends Controller {
                  'pagination' => array('pageSize' => 5,),
                  'totalItemCount' => 5,
             ));
+        $dataProviderInd = new CActiveDataProvider('Indicadores');
         $this->render('index',array(
             'dataProviderDoc' => $dataProviderDoc,
-            'dataProviderNot' => $dataProviderNot
+            'dataProviderNot' => $dataProviderNot,
+            'dataProviderInd' => $dataProviderInd
         ));
     }
 

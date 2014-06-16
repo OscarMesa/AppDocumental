@@ -26,6 +26,8 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     <?php echo $form->textFieldRow($model, 'nombre_documento', array('class' => 'span3', 'size' => 60, 'maxlength' => 100)); ?>
 
     <?php echo $form->fileFieldRow($model, 'binaryfile', array('class' => 'span3')); ?>
+    
+    <?php echo $form->dropDownListRow($model, 'id_tipo',  CHtml::listData(TipoDocumento::model()->findAll(), 'id', 'nombre'), array('class' => 'span3')); ?>
      
     <p>Asignar categorias a los documentos.</p>
     <div id="Categorias" class="listas_asignacion">
@@ -51,7 +53,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
         }
         ?>
     </div>
-    
+    <br/>
     <p>Asignar documento a los siguientes perfiles. <span class="required">*</span> Recuerde que esta asignación le enviará un correo a todos los usuarios vinculados a estos perfiles.</p>
     <div id="CrugeAuthitem_name" class="listas_asignacion">
         <?php
@@ -79,8 +81,10 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     <?php
     echo $form->hiddenField($model, 'id_usuario_modificador', array('value' => Yii::app()->user->getId()));
     ?>
-
-<?php echo $form->textAreaRow($model, 'descripcion', array('style' => 'width: 489px; height: 111px;')); ?>
+<br/>
+<?php echo $form->textAreaRow($model, 'descripcion', array('style' => 'width: 739px; height: 137px;')); ?>
+<br/>
+<?php echo $form->textAreaRow($model, 'mensaje_correo', array('style' => 'width: 739px; height: 137px;')); ?>
 <div class="form-actions">
 <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType' => 'submit', 'label' => ($model->isNewRecord ? 'Crear' : 'Guardar'))); ?>
 </div>
