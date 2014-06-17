@@ -284,6 +284,7 @@ class DocumentoController extends Controller {
      * @param Documento $documento
      */
     public function enviarMailUsuariosDoc($usuarios, $documento) {
+        Yii::import('application.vendor.Utilidades');
         Yii::import('ext.yii-mail.YiiMailMessage');
         $message = new YiiMailMessage();
         $message->view = "notificacionArchivo";
@@ -293,7 +294,7 @@ class DocumentoController extends Controller {
             $message->setBody($params, 'text/html');
             // if ($usuario->email == 'oscarmesa.elpoli@gmail.com') {
             $message->addTo($usuario->email);
-            $message->from = 'correo@midominio.com';
+            $message->from = Utilidades::$mail;
             Yii::app()->mail->send($message);
         }
     }
@@ -304,6 +305,7 @@ class DocumentoController extends Controller {
      * @param Documento $documento
      */
     public function actualizarMailUsuariosDoc($usuarios, $documento) {
+        Yii::import('application.vendor.Utilidades');
         Yii::import('ext.yii-mail.YiiMailMessage');
         $message = new YiiMailMessage();
         $message->view = "notificacionArchivo";
@@ -313,7 +315,7 @@ class DocumentoController extends Controller {
             $message->setBody($params, 'text/html');
             // if ($usuario->email == 'oscarmesa.elpoli@gmail.com') {
             $message->addTo($usuario->email);
-            $message->from = 'correo@midominio.com';
+            $message->from = Utilidades::$mail;
             Yii::app()->mail->send($message);
         }
     }

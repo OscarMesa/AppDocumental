@@ -163,7 +163,6 @@ class UiController extends Controller
 
     public function actionPwdRec()
     {
-
         $this->layout = CrugeUtil::config()->resetPasswordLayout;
         
         $model = Yii::app()->user->um->getNewCrugeLogon('pwdrec');

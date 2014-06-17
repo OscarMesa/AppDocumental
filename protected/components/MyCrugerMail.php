@@ -16,12 +16,13 @@ class MyCrugerMail extends CrugeMailer {
 
     public function sendEmail($to, $subject, $body) {
         Yii::import('ext.yii-mail.YiiMailMessage');
+        Yii::import('application.vendor.Utilidades');
         $message = new YiiMailMessage();
         $message->setBody($body, 'text/html');
         //$params = array('usuario' => $usuario, 'documento' => $documento);
         $message->subject = $subject;
         $message->addTo($to);
-        $message->from = 'correo@midominio.com';
+        $message->from = Utilidades::$mail;
         Yii::app()->mail->send($message);
     }
 
