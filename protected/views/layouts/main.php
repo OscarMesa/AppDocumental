@@ -55,6 +55,7 @@
                         array('label' => 'Ingresar '
                             , 'url' => Yii::app()->user->ui->loginUrl
                             , 'visible' => Yii::app()->user->isGuest
+                            ,'active'=>$this->id=='ui'?true:false
                             , 'itemOptions' => array(
                                 'id' => 'mnu-entrar',
                                 'class' => 'menu_ingreso menu_entrar'

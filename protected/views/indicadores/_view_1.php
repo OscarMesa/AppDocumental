@@ -1,3 +1,1 @@
-<div class="header-indicadores"><?php echo $data->nombre_ind; ?></div>
-
-<li style="border-bottom: 1px dotted #E1E1E1; padding: 3px; margin-right: 0px; background-image:none; text-align:center; list-style: inside url(http://www.applab.in/images/indica_green.png);"><span style=" color: green;"><?php echo $data->valor;?></span><a style="text-decoration:none; color: #333; font-weight:normal; display: inline !important; background:none; padding:0;" href=""></a></li>
+<li class="indicador" style=""><?php echo $data->nombre_ind; ?><span><?php echo $data->valor;?></span></li>

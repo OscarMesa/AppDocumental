@@ -72,7 +72,7 @@ h1{
 }
 .navbar .nav{
     //height: 67px; 
-    margin-top: -13px;
+    margin-top: -6px;
     margin-left: 16em;
 }
 
@@ -114,6 +114,7 @@ h1{
 
 .navbar-inner{
     border: none;
+    min-height: 58px;
 }
 
 .navbar-inverse .navbar-inner{
@@ -285,7 +286,8 @@ thead th{
     padding: 0;
     margin-left: 3em;
     img{
-        max-width: 85%;
+        margin-top: 6px;
+        max-width: 81%;
     }
 }
 
@@ -369,7 +371,9 @@ table tr.selected{
 }
 
 .fron-image {
-   
+    img{
+        width: 70%;
+    }
 }
 
 .fron-descripcion{
@@ -403,6 +407,34 @@ table tr.selected{
 
 #lista-archivos .summary{
     display: none;
+}
+
+.indicador{
+    border-bottom: 1px dotted #E1E1E1; 
+    padding: 3px; 
+    margin-right: 0px; 
+    background-image:none; 
+    text-align:left; 
+    width:109%;
+    list-style: inside url(http://www.applab.in/images/indica_green.png);
+    span{
+        color: green; 
+        float: right
+    }
+    a{
+        text-decoration:none; 
+        color: #333; 
+        font-weight:normal; 
+        display: inline !important;
+        background:none; 
+        padding:0;
+    }
+}
+#lista-indicadores{ 
+    margin-top: -43px;
+    .summary{
+        display: none;
+    }
 }
     /* Large desktop */
     @media (min-width: 1200px) { 
