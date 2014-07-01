@@ -4,7 +4,7 @@
 // Yii::setPathOfAlias('local','path/to/local-folder');
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
-Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
+Yii::setPathOfAlias('bootstrap', dirname(__FILE__) . '/../extensions/bootstrap');
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
     'name' => 'Gestion Documental',
@@ -24,7 +24,7 @@ return array(
         // uncomment the following to enable the Gii tool
 
         'gii' => array(
-            'generatorPaths'=>array(
+            'generatorPaths' => array(
                 'bootstrap.gii',
             ),
             'class' => 'system.gii.GiiModule',
@@ -34,6 +34,7 @@ return array(
         ),
         //Cruge, manejo de usuarios
         'cruge' => array(
+            'userFilter' => 'application.components.MiFiltroUsuario',
             'tableprefix' => 'cruge_',
             // para que utilice a protected.modules.cruge.models.auth.CrugeAuthDefault.php
             //
@@ -92,8 +93,8 @@ return array(
             'class' => 'application.modules.cruge.components.CrugeWebUser',
             'loginUrl' => array('/cruge/ui/login'),
         ),
-        'bootstrap'=>array(
-            'class'=>'bootstrap.components.Bootstrap',
+        'bootstrap' => array(
+            'class' => 'bootstrap.components.Bootstrap',
         ),
         // uncomment the following to enable URLs in path-format
         'urlManager' => array(
@@ -112,6 +113,8 @@ return array(
         'db' => array(
             'connectionString' => 'mysql:host=localhost;dbname=app_documental',
             'emulatePrepare' => true,
+            'enableParamLogging' => true,
+            'enableProfiling' => true,
             'username' => 'root',
             'password' => 'root',
             'charset' => 'utf8',
@@ -124,15 +127,31 @@ return array(
             'class' => 'CLogRouter',
             'routes' => array(
                 array(
+                    // logging SQl queries: 
                     'class' => 'CFileLogRoute',
-                    'levels' => 'error, warning, error, info, rbac',
+                    //'levels' => 'trace',
+                    'categories' => 'system.db.CDbCommand',
+                    //'LogPath' => '/var/www/log.sql',
+                    'LogFile' => 'db.trace',
+                    'maxFileSize' => 1024 * 100, //100 MB
                 ),
-            // uncomment the following to show log messages on web pages
-            /*
-              array(
-              'class'=>'CWebLogRoute',
-              ),
-             */
+                array(
+                    'class' => 'CWebLogRoute',
+                    'categories' => 'system.db.CDbCommand',
+                    'showInFireBug' => true,
+                ),
+          
+                array(
+                    'class' => 'CFileLogRoute',
+                    'levels' => 'trace, info',
+                    'categories' => 'system.*',
+                ),
+          
+                array(
+                    'class' => 'CWebLogRoute',
+                    'categories' => 'system.db.CDbCommand',
+                    'showInFireBug' => false,
+                ),
             ),
         ),
         'authManager' => array(
@@ -155,7 +174,7 @@ return array(
                 'username' => 'info@aerovision.com.co',
                 'password' => 'aerovision',
                 'port' => '25',
-            ),
+            ), 
             'viewPath' => 'application.views.mail',
         ),
     ),
